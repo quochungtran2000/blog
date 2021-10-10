@@ -23,6 +23,7 @@ export const SHeaderLeft = styled.div`
 
   svg {
     width: 15px;
+    height: 15px;
     fill: ${({theme}) => theme.text};
     margin-right: 20px;
   }

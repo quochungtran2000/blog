@@ -4,6 +4,7 @@ export interface ITheme {
   toggleBorder: string;
   headerColor: string;
   gradient: string;
+  font90: string;
 }
 
 export const lightTheme: ITheme = {
@@ -12,6 +13,7 @@ export const lightTheme: ITheme = {
   toggleBorder: "#FFF",
   headerColor: "#ffffff",
   gradient: "linear-gradient(#39598A, #79D7ED)",
+  font90: "90%",
 };
 
 export const darkTheme: ITheme = {
@@ -20,4 +22,5 @@ export const darkTheme: ITheme = {
   text: "#FAFAFA",
   toggleBorder: "#6B8096",
   gradient: "linear-gradient(#091236, #1E215D)",
+  font90: "90%",
 };
