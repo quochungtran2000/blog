@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./theme";
 import { GlobalStyles } from "./global";
 import { Header } from "./components/Header";
-// import { DarkModeButton } from "./components/ui-kits/DarkModeButton";
 import { SideBar } from "./components/SideBar";
+import * as Sentry from "@sentry/react";
+
 function App() {
   const [theme, setTheme] = useState("light");
   const [themeConfig, setThemeConfig] = useState(lightTheme)
@@ -31,4 +32,4 @@ function App() {
   );
 }
 
-export default App;
+export default  Sentry.withProfiler(App);
