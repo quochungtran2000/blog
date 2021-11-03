@@ -50,7 +50,7 @@ export const lightTheme: ITheme = {
   textColor: Color.PRESTIGEBLUE,
   headerColor: Color.WHITE,
   bodyColor: Color.LIGHTHEME,
-  navHoverColor: Color.GRISAILLE
+  navHoverColor: Color.CITYLIGHT
 }
 
 export const darkTheme: ITheme = {
