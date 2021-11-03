@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { transitionSpeed } from "../../../application.constant";
+import { SMain } from "../Layout/Layout.styled";
 
 export const SNavBar = styled.nav`
   position: fixed;
@@ -18,6 +19,10 @@ export const SNavBar = styled.nav`
 
     &:hover {
       width: 14rem;
+    }
+
+    &:hover ~ ${SMain} {
+      margin-left: 14rem;
     }
   }
 
@@ -85,7 +90,7 @@ export const SNavBarLogo = styled.li`
       transition: ease ${({ theme }) => theme.speed};
     }
 
-    @${SNavBar}:hover & svg {
+    ${SNavBar}:hover & svg {
       margin-left: 11rem;
     }
   }

@@ -47,7 +47,7 @@ export const SHeaderSearchBar = styled.div`
   display: flex;
   width: 50%;
   max-width: 550px;
-  @media(max-width: 400px){
+  @media(max-width: 600px){
     display: none;
   }
 `;

@@ -1,28 +1,30 @@
-import { createGlobalStyle } from 'styled-components';
-import { lightTheme, darkTheme } from './theme';
+import { createGlobalStyle } from "styled-components";
+import { ITheme } from "./theme";
 
 type Props = {
-  theme: typeof lightTheme| typeof darkTheme
-}
+  theme: ITheme;
+};
 
 export const GlobalStyles = createGlobalStyle<Props>`
   *,
   *::after,
   *::before {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
   }
   body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
-    background: ${({theme}) => theme.bodyColor};
+    background: ${({ theme }) => theme.bodyColor};
     color: ${({ theme }) => theme.textColor};
     padding: 0;
     margin: 0;
     font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     transition: all 0.25s linear;
+
+    #root {
+      height: 100vh;
+    }
   }
 
   body::-webkit-scrollbar {
@@ -37,12 +39,6 @@ export const GlobalStyles = createGlobalStyle<Props>`
     background: #6649b8;
   }
   
-  footer {
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
   small {
     display: block;
   }
