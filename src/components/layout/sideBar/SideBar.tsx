@@ -1,6 +1,4 @@
-import React
-// , { useState } 
-from "react";
+import React from "react"; // , { useState }
 import { ReactComponent as HomeIcon } from "../../../assets/icons/home-icon.svg";
 import { ReactComponent as CategoryIcon } from "../../../assets/icons/category.svg";
 import { ReactComponent as ArrowRightIcon } from "../../../assets/icons/arrow-right.svg";
@@ -27,7 +25,7 @@ interface SideBarProps {
   children: React.ReactNode;
 }
 
-const SideBar = (props: SideBarProps) => {
+const SideBar = () => {
   // const [open, setOpen] = useState(false);
 
   // const onOpenClick = () => {
