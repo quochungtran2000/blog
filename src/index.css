@@ -13,5 +13,5 @@ code {
 }
 
 .fb_dialog_content iframe {
-  bottom: 7rem;
+  bottom: 5rem !important;
 }
