@@ -1,4 +1,4 @@
-import { DarkModeButton } from "../ui-kits/DarkModeButton";
+import { DarkModeButton } from "../DarkModeButton";
 import {
   SHeaderBlogTitle,
   SHeaderLeft,
@@ -8,8 +8,8 @@ import {
   SHeaderSearchBar,
   SHeaderWrapper,
 } from "./Header.styled";
-import { ITheme } from "../../theme";
-import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg'
+import { ITheme } from "../../../styles/theme";
+// import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 
 interface HeaderProps {
   theme: string;
@@ -21,7 +21,7 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <SHeaderWrapper>
       <SHeaderLeft>
-        <MenuIcon></MenuIcon>
+        {/* <MenuIcon></MenuIcon> */}
         <SHeaderBlogTitle>Coding Blog</SHeaderBlogTitle>
       </SHeaderLeft>
       <SHeaderRight>

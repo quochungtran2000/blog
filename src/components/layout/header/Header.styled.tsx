@@ -9,7 +9,7 @@ export const SHeaderWrapper = styled.header`
   height: 60px;
   padding: 0 30px 0 25px;
   background-color: ${({ theme }) => theme.headerColor};
-  color: #161617;
+  color: ${({theme}) => theme.textColor};
   z-index: 50;
   box-shadow: 0 2px 10px 0 rgb(0 0 0 / 7%);
   -webkit-transition: all 0.1s ease;
@@ -24,14 +24,18 @@ export const SHeaderLeft = styled.div`
   svg {
     width: 15px;
     height: 15px;
-    fill: ${({theme}) => theme.text};
+    fill: ${({theme}) => theme.textColor};
     margin-right: 20px;
+  }
+
+  @media(max-width: 400px){
+    width: 150px;
   }
 `;
 
 export const SHeaderBlogTitle = styled.h1`
   font-size: 1.3rem;
-  color: ${({theme}) => theme.text}
+  color: ${({theme}) => theme.textColor}
 `
 
 export const SHeaderRight = styled.div`
@@ -43,6 +47,9 @@ export const SHeaderSearchBar = styled.div`
   display: flex;
   width: 50%;
   max-width: 550px;
+  @media(max-width: 400px){
+    display: none;
+  }
 `;
 
 export const SHeaderNaviconRight = styled.div`
@@ -52,7 +59,7 @@ export const SHeaderNaviconRight = styled.div`
 `;
 
 export const SHeaderNaviconLable = styled.span`
-  color: ${({theme}) => theme.text};
+  color: ${({theme}) => theme.textColor};
   font-size: 12px;
 `;
 

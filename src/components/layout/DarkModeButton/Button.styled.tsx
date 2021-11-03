@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { transitionSpeed } from '../../../application.constant'
 
 export const DarkModeButtonS = styled.i<any>`
   display: flex;
@@ -7,7 +8,7 @@ export const DarkModeButtonS = styled.i<any>`
   height: 18px;
   margin-left: 8px;
   border-radius: 10px;
-  border: 1px solid #48525c;
+  border: 1px solid ${({theme}) => theme.textColor};
 
   &::before {
     content: '';
@@ -17,8 +18,8 @@ export const DarkModeButtonS = styled.i<any>`
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #48525c;
+    background-color: ${({theme}) => theme.textColor};
     -webkit-transition: all .1s ease;
-    transition: all .2s ease;
+    transition: all ${transitionSpeed} ease;
   }
 `
