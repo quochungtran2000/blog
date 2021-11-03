@@ -17,13 +17,26 @@ export const GlobalStyles = createGlobalStyle<Props>`
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: ${({theme}) => theme.body};
-    color: ${({ theme }) => theme.text};
+    background: ${({theme}) => theme.bodyColor};
+    color: ${({ theme }) => theme.textColor};
     padding: 0;
     margin: 0;
     font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     transition: all 0.25s linear;
   }
+
+  body::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #1e1e24;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+  }
+  
   footer {
     position: absolute;
     bottom: 5%;
@@ -37,6 +50,6 @@ export const GlobalStyles = createGlobalStyle<Props>`
     display: block;
   }
   a {
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.textColor};
   }
 `;
