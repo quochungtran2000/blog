@@ -6,14 +6,17 @@ import { BrowserRouter } from "react-router-dom";
 import { CustomThemeProvider } from "./context/Theme";
 import { UserProvider } from "./context/User";
 import Routers from "./Routers";
+import { SideBarProvider } from "./context/SideBar";
 
 function App() {
   return (
     <BrowserRouter>
       <UserProvider>
         <CustomThemeProvider>
-          <Routers />
-          <ToastContainer autoClose={3000} />
+          <SideBarProvider>
+            <Routers />
+            <ToastContainer autoClose={3000} />
+          </SideBarProvider>
         </CustomThemeProvider>
       </UserProvider>
     </BrowserRouter>

@@ -4,8 +4,8 @@ import { GlobalStyles } from "../styles/global";
 import { darkTheme, ITheme, lightTheme } from "../styles/theme";
 
 type ContextValue = {
-  sideMode: SideBarMode;
-  setSideMode: () => void;
+  open: boolean;
+  setOpen: () => void;
   theme: Theme;
   setTheme: () => void;
   currentTheme: ITheme;
@@ -18,7 +18,6 @@ type Props = {
 };
 
 export type Theme = "dark" | "light";
-export type SideBarMode = "open" | "close";
 export interface IWindowSize {
   width: number | undefined;
   height: number | undefined;
@@ -27,7 +26,7 @@ export interface IWindowSize {
 export function CustomThemeProvider(props: Props) {
   const [theme, setTheme] = useState<Theme>("light");
   const [themeConfig, setThemeConfig] = useState<ITheme>(lightTheme);
-  const [sideBarMode, setSideBarMode] = useState<SideBarMode>("open");
+  const [open, setOpen] = useState<boolean>(true);
   const [windowSize, setWindowSize] = useState<IWindowSize>({
     width: undefined,
     height: undefined,
@@ -53,14 +52,7 @@ export function CustomThemeProvider(props: Props) {
   console.log(windowSize);
 
   const handleOpenSideBar = () => {
-    const size: SideBarMode =
-      (windowSize as any).width <= 600
-        ? "close"
-        : sideBarMode === "open"
-        ? "close"
-        : "open";
-
-    setSideBarMode(size);
+    setOpen((windowSize as any).width <= 600 ? false : !open);
   };
 
   const handleSetTheme = () => {
@@ -74,8 +66,8 @@ export function CustomThemeProvider(props: Props) {
         theme,
         setTheme: handleSetTheme,
         currentTheme: themeConfig,
-        sideMode: sideBarMode,
-        setSideMode: handleOpenSideBar,
+        setOpen: handleOpenSideBar,
+        open: open,
       }}
     >
       <ThemeProvider theme={themeConfig}>

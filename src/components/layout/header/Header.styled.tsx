@@ -28,7 +28,7 @@ export const SHeaderLeft = styled.div`
     margin-right: 20px;
   }
 
-  @media(max-width: 400px){
+  @media(max-width: 600px){
     width: 150px;
   }
 `;

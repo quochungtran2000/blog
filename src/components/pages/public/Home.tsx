@@ -1,3 +1,4 @@
+import { Button, Grid } from "@mui/material";
 import { locationApi } from "../../../api";
 import authApi from "../../../api/authApi";
 import postApi from "../../../api/postApi";
@@ -8,6 +9,10 @@ export default function Home() {
   const { setToken, user } = useUser();
   return (
     <Layout>
+      <Grid container>
+        <Grid item sm={12} md={8} lg={8} xl={8}>1</Grid>
+        <Grid item sm={12} md={4} lg={4} xl={4}>2</Grid>
+      </Grid>
       <h3 style={{ textAlign: "center" }}>Home Page</h3>
 
       <button
@@ -37,7 +42,7 @@ export default function Home() {
         </div>
       )}
 
-      <button
+      <Button
         onClick={async () => {
           const city = await locationApi.city();
           const district = await locationApi.district(1060);
@@ -49,13 +54,13 @@ export default function Home() {
         }}
       >
         Login
-      </button>
+      </Button>
       <div />
       <button
         onClick={async () => {
-          const posts = await postApi.posts({ page: 1 })
+          const posts = await postApi.posts({ page: 1 });
           const post = await postApi.post(4);
-          console.log(post, posts)
+          console.log(post, posts);
         }}
       >
         Login

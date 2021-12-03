@@ -19,59 +19,70 @@ import {
   SNavBarLink,
   SNavBarItem,
 } from "./SideBar.styled";
+import { memo } from "react";
+import { useSideBar } from "../../../context/SideBar";
+import { useTheme } from "../../../context/Theme";
 // import { useTheme } from "../../../context/Theme";
 
 const SideBar = () => {
+  const { open, setOpen } = useTheme();
 
-  // const { setSideMode, sideMode} = useTheme()
+  console.log(`open`, open);
 
   return (
-    <SNavBar>
+    <SNavBar open={open}>
       <SNavBarNav>
-        <SNavBarLogo>
-          <SNavBarLink to="/" >
+        <SNavBarLogo open={open}>
+          <SNavBarLink
+            open={open}
+            onClick={(e: any) => {
+              e.preventDefault();
+              setOpen();
+            }}
+            to="/"
+          >
             <span>Coding</span>
             <ArrowRightIcon />
           </SNavBarLink>
         </SNavBarLogo>
 
         <SNavBarItem>
-          <SNavBarLink to="/">
+          <SNavBarLink open={open} to="/">
             <HomeIcon />
             <span>Home</span>
           </SNavBarLink>
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/post">
+          <SNavBarLink open={open} to="/post">
             <TrendingIcon />
             <span>Trending</span>
           </SNavBarLink>
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/post">
+          <SNavBarLink open={open} to="/post">
             <HomeIcon />
             <span>Post</span>
           </SNavBarLink>
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/career">
+          <SNavBarLink open={open} to="/career">
             <CategoryIcon />
             <span>Career</span>
           </SNavBarLink>
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/">
+          <SNavBarLink open={open} to="/">
             <AboutIcon />
             <span>About</span>
           </SNavBarLink>
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/contact">
+          <SNavBarLink open={open} to="/contact">
             <ContactIcon />
             <span>Contact</span>
           </SNavBarLink>
@@ -81,4 +92,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default memo(SideBar);
