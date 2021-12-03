@@ -16,10 +16,14 @@ axiosClient.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    (config as any).headers.Authorization = `Bearer ${token}`;
+    (config as any).headers.Authorization = token;
   }
 
   return config;
+});
+
+axiosClient.interceptors.response.use((res) => {
+  return res.data;
 });
 
 export default axiosClient;

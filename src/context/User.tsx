@@ -1,18 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { userApi } from "../api";
 import { toast } from "react-toastify";
-import { Roles } from "../application.constant";
+import authApi from "../api/authApi";
+import { IUser } from "../utils/interface";
 
 type ContextValue = {
-  user?: any;
-  setUser: React.Dispatch<React.SetStateAction<any | undefined>>;
-  getUser: () => Promise<any | undefined>;
+  user?: IUser;
+  setToken: (data: string) => void;
   logout: () => void;
-};
-type User = {
-  id: number;
-  role: Roles;
 };
 
 export const UserContext = React.createContext<ContextValue>(null as any);
@@ -24,50 +19,63 @@ type Props = {
 };
 
 export function UserProvider(props: Props) {
-  const [user, setUser] = useState<any | undefined>(() => {
-    // Get token from localStorage
-    const token = localStorage.getItem("token");
+  const [user, setUser] = useState<any | undefined>(undefined);
 
-    // User is undefined if there's no token
-    if (!token) return undefined;
-
-    // Decode if there's token
-    // const decoded: User = jwtDecode(token);
-
-    // Set id and role as user data
-    // => Will re-render routes and push to / (user role's homepage)
-    return {
-      id: 1,
-      role: "user",
-    } as User;
-  });
+  const [token, setToken] = useState<string | null>(
+    localStorage.getItem("token")
+  );
 
   const history = useHistory();
 
-  const getUser = async () => {
-    try {
-      const userData = await userApi.me();
-      setUser(userData.data);
-      return userData;
-    } catch (error: any) {
-      // Log error
-      console.log("Get user error:", { error });
-
-      // Toast error message
-      toast.error(error.message);
-
-      if (error?.response?.data?.statusCode === 401) {
-        // Set user data to undefined
-        // => Will auto re-render routes and push to / (login page)
+  useEffect(() => {
+    if (!token) {
+      return setUser(null);
+    }
+    const fetchUser = async () => {
+      const data = await authApi.me().catch(err => {
+        console.log(err);
         setUser(undefined);
 
-        // Remove token from localStorage
+  //       // Remove token from localStorage
         localStorage.removeItem("token");
 
-        // Go back to / (login page)
+  //       // Go back to / (login page)
         history.replace("/");
-      }
-    }
+      }) ;
+      setUser(data);
+    };
+    fetchUser();
+  }, [token]);
+
+
+  // const getUser = async () => {
+  //   try {
+  //     const userData = await userApi.me();
+  //     setUser(userData.data);
+  //     return userData;
+  //   } catch (error: any) {
+  //     // Log error
+  //     console.log("Get user error:", { error });
+
+  //     // Toast error message
+  //     toast.error(error.message);
+
+  //     if (error?.response?.data?.statusCode === 401) {
+  //       // Set user data to undefined
+  //       // => Will auto re-render routes and push to / (login page)
+  //       setUser(undefined);
+
+  //       // Remove token from localStorage
+  //       localStorage.removeItem("token");
+
+  //       // Go back to / (login page)
+  //       history.replace("/");
+  //     }
+  //   }
+  // };
+
+  const handleSetToken = (data: string) => {
+    setToken(data);
   };
 
   const logout = () => {
@@ -86,9 +94,8 @@ export function UserProvider(props: Props) {
     <UserContext.Provider
       value={{
         user,
-        getUser,
-        setUser,
         logout,
+        setToken: handleSetToken,
       }}
     >
       {props.children}
