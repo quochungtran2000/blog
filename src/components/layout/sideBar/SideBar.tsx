@@ -1,4 +1,3 @@
-import React from "react"; // , { useState }
 import { ReactComponent as HomeIcon } from "../../../assets/icons/home-icon.svg";
 import { ReactComponent as CategoryIcon } from "../../../assets/icons/category.svg";
 import { ReactComponent as ArrowRightIcon } from "../../../assets/icons/arrow-right.svg";
@@ -20,23 +19,17 @@ import {
   SNavBarLink,
   SNavBarItem,
 } from "./SideBar.styled";
-
-interface SideBarProps {
-  children: React.ReactNode;
-}
+// import { useTheme } from "../../../context/Theme";
 
 const SideBar = () => {
-  // const [open, setOpen] = useState(false);
 
-  // const onOpenClick = () => {
-  //   setOpen(!open);
-  // };
+  // const { setSideMode, sideMode} = useTheme()
 
   return (
     <SNavBar>
       <SNavBarNav>
         <SNavBarLogo>
-          <SNavBarLink to="/asd">
+          <SNavBarLink to="/" >
             <span>Coding</span>
             <ArrowRightIcon />
           </SNavBarLink>
@@ -50,23 +43,23 @@ const SideBar = () => {
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/">
+          <SNavBarLink to="/post">
             <TrendingIcon />
             <span>Trending</span>
           </SNavBarLink>
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/">
+          <SNavBarLink to="/post">
             <HomeIcon />
-            <span>Home</span>
+            <span>Post</span>
           </SNavBarLink>
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/">
+          <SNavBarLink to="/career">
             <CategoryIcon />
-            <span>Category</span>
+            <span>Career</span>
           </SNavBarLink>
         </SNavBarItem>
 
@@ -78,7 +71,7 @@ const SideBar = () => {
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink to="/">
+          <SNavBarLink to="/contact">
             <ContactIcon />
             <span>Contact</span>
           </SNavBarLink>

@@ -1,5 +1,9 @@
-import { Layout } from "../../layout/Layout";
+import { Layout } from "../../layout";
 
 export default function Home() {
-  return <Layout><h3>Home</h3></Layout>;
+  return (
+    <Layout>
+      <h3 style={{ textAlign: "center" }}>Home Page</h3>
+    </Layout>
+  );
 }

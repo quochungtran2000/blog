@@ -2,6 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { transitionSpeed } from "../../../application.constant";
 import { SMain } from "../Layout/Layout.styled";
+// import { SideBarMode } from "../../../context/Theme";
+
+// type NavProps = {
+//   sideMode: SideBarMode
+// }
 
 export const SNavBar = styled.nav`
   position: fixed;
