@@ -1,5 +1,6 @@
 import { locationApi } from "../../../api";
 import authApi from "../../../api/authApi";
+import postApi from "../../../api/postApi";
 import { useUser } from "../../../context/User";
 import { Layout } from "../../layout";
 
@@ -38,14 +39,23 @@ export default function Home() {
 
       <button
         onClick={async () => {
-          const city = await locationApi.city()
-          const district = await locationApi.district(1060)
-          const ward = await locationApi.ward(1060, 384)
-         
+          const city = await locationApi.city();
+          const district = await locationApi.district(1060);
+          const ward = await locationApi.ward(1060, 384);
 
           console.log(city);
           console.log(district);
           console.log(ward);
+        }}
+      >
+        Login
+      </button>
+      <div />
+      <button
+        onClick={async () => {
+          const posts = await postApi.posts({ page: 1 })
+          const post = await postApi.post(4);
+          console.log(post, posts)
         }}
       >
         Login

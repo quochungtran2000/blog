@@ -32,21 +32,21 @@ export function UserProvider(props: Props) {
       return setUser(null);
     }
     const fetchUser = async () => {
-      const data = await authApi.me().catch(err => {
+      const data = await authApi.me().catch((err) => {
         console.log(err);
         setUser(undefined);
 
-  //       // Remove token from localStorage
+        // Remove token from localStorage
         localStorage.removeItem("token");
 
-  //       // Go back to / (login page)
+        // Go back to / (login page)
         history.replace("/");
-      }) ;
+      });
       setUser(data);
     };
     fetchUser();
+    // eslint-disable-next-line
   }, [token]);
-
 
   // const getUser = async () => {
   //   try {

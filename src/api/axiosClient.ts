@@ -10,8 +10,10 @@ const axiosClient: AxiosInstance = axios.create({
 });
 
 axiosClient.interceptors.request.use((config) => {
-  // console.log('ENV: ' + JSON.stringify(process.env));
-  // console.log('Base URL: ' + config.baseURL);
+  console.log('ENV: ' + JSON.stringify(process.env));
+  console.log('Base URL: ' + config.baseURL);
+
+  console.log(config);
 
   const token = localStorage.getItem("token");
 
