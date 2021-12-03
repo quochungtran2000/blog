@@ -20,7 +20,7 @@ import {
   SNavBarItem,
 } from "./SideBar.styled";
 import { memo } from "react";
-import { useSideBar } from "../../../context/SideBar";
+// import { useSideBar } from "../../../context/SideBar";
 import { useTheme } from "../../../context/Theme";
 // import { useTheme } from "../../../context/Theme";
 

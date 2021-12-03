@@ -11,7 +11,7 @@ const authApi = {
     const url = `${API_BASE_URL}/auth/login`;
     return axiosClient.post(url, data);
   },
-  register: (data: IRegisterInput) => {
+  register: (data: IRegisterInput): Promise<{ token: string }> => {
     const url = `${API_BASE_URL}/auth/register`;
     return axiosClient.post(url, data);
   },
