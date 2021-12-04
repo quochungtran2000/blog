@@ -64,7 +64,7 @@ export const SPostCardTitle = styled.h2<any>`
     color: inherit;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 `;

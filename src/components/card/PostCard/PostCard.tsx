@@ -3,7 +3,6 @@ import * as S from "./PostCard.styled";
 
 type Props = {
   data: IPost;
-  key: any;
 };
 
 function PostCard({ data }: Props) {
@@ -17,22 +16,22 @@ function PostCard({ data }: Props) {
       <S.SPostCardContent>
         <S.SPostCardHeadLine>
           <S.SPostCardLable>
-            <S.SPostCardLink to="/" author={false} underline={true}>
+            <S.SPostCardLink to="/" author="false" underline="true">
               #asd
             </S.SPostCardLink>
           </S.SPostCardLable>
           <S.SPostCardTitle>
-            <S.SPostCardLink to="/" author={false} underline={false}>
+            <S.SPostCardLink to="/" author="false" underline="false">
               {data.title}
             </S.SPostCardLink>
           </S.SPostCardTitle>
           <S.SPostCardInfo>
             <S.SPostCardHeader>
-              <S.SPostCardLink author={true} underline={false} to="/">
+              <S.SPostCardLink author="true" underline="false" to="/">
                 {data.author.fullname}
               </S.SPostCardLink>
               <S.SPostCardTime>
-                {new Date(data.update_date).toDateString()}
+                {new Date(data.update_date).toLocaleDateString('en-GB')}
               </S.SPostCardTime>
             </S.SPostCardHeader>
           </S.SPostCardInfo>

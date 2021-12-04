@@ -42,6 +42,7 @@ export const SNavBar = styled.nav<any>`
     bottom: 0;
     width: 100vw;
     height: 4rem;
+    z-index:1;
   }
 `;
 
