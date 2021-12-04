@@ -7,4 +7,8 @@ export const SMain = styled.main`
   height: 100%;
   transition: ease ${transitionSpeed};
   padding: 1rem;
+
+  @media (max-width: 600px){
+    margin-left: 0;
+  }
 `;

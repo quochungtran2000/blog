@@ -7,6 +7,7 @@ export const DarkModeButtonS = styled.i<any>`
   width: 33px;
   height: 18px;
   margin-left: 8px;
+  margin-right: 8px;
   border-radius: 10px;
   border: 1px solid ${({theme}) => theme.textColor};
 

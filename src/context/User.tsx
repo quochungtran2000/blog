@@ -1,18 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { userApi } from "../api";
 import { toast } from "react-toastify";
-import { Roles } from "../application.constant";
+import authApi from "../api/authApi";
+import { IUser } from "../utils/interface";
+import jwtDecode from "jwt-decode";
 
 type ContextValue = {
-  user?: any;
-  setUser: React.Dispatch<React.SetStateAction<any | undefined>>;
-  getUser: () => Promise<any | undefined>;
+  user?: IUser;
+  setUser: React.Dispatch<React.SetStateAction<IUser | undefined>>;
+  getUser: () => Promise<IUser | undefined>;
   logout: () => void;
-};
-type User = {
-  id: number;
-  role: Roles;
 };
 
 export const UserContext = React.createContext<ContextValue>(null as any);
@@ -24,7 +21,7 @@ type Props = {
 };
 
 export function UserProvider(props: Props) {
-  const [user, setUser] = useState<any | undefined>(() => {
+  const [user, setUser] = useState<IUser | undefined>(() => {
     // Get token from localStorage
     const token = localStorage.getItem("token");
 
@@ -32,31 +29,25 @@ export function UserProvider(props: Props) {
     if (!token) return undefined;
 
     // Decode if there's token
-    // const decoded: User = jwtDecode(token);
+    const decoded: IUser = jwtDecode(token.replace("Bearer ", ""));
 
     // Set id and role as user data
     // => Will re-render routes and push to / (user role's homepage)
-    return {
-      id: 1,
-      role: "user",
-    } as User;
+    return decoded;
   });
 
   const history = useHistory();
 
   const getUser = async () => {
     try {
-      const userData = await userApi.me();
-      setUser(userData.data);
+      const userData = await authApi.me();
+      setUser(userData);
       return userData;
     } catch (error: any) {
-      // Log error
-      console.log("Get user error:", { error });
-
       // Toast error message
       toast.error(error.message);
 
-      if (error?.response?.data?.statusCode === 401) {
+      if (error?.response?.status === 401) {
         // Set user data to undefined
         // => Will auto re-render routes and push to / (login page)
         setUser(undefined);
@@ -86,9 +77,9 @@ export function UserProvider(props: Props) {
     <UserContext.Provider
       value={{
         user,
-        getUser,
-        setUser,
         logout,
+        setUser,
+        getUser,
       }}
     >
       {props.children}

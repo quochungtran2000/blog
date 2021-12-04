@@ -10,16 +10,22 @@ const axiosClient: AxiosInstance = axios.create({
 });
 
 axiosClient.interceptors.request.use((config) => {
-  // console.log('ENV: ' + JSON.stringify(process.env));
-  // console.log('Base URL: ' + config.baseURL);
+  console.log('ENV: ' + JSON.stringify(process.env));
+  console.log('Base URL: ' + config.baseURL);
+
+  console.log(config);
 
   const token = localStorage.getItem("token");
 
   if (token) {
-    (config as any).headers.Authorization = `Bearer ${token}`;
+    (config as any).headers.Authorization = token;
   }
 
   return config;
+});
+
+axiosClient.interceptors.response.use((res) => {
+  return res.data;
 });
 
 export default axiosClient;

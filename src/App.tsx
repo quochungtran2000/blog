@@ -13,7 +13,14 @@ function App() {
       <UserProvider>
         <CustomThemeProvider>
           <Routers />
-          <ToastContainer autoClose={3000} />
+          <ToastContainer
+            theme="colored"
+            position="bottom-right"
+            autoClose={2000}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+          />
         </CustomThemeProvider>
       </UserProvider>
     </BrowserRouter>

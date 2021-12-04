@@ -1,9 +1,9 @@
-import React from 'react'
+import { Layout } from "../../layout";
 
 export default function NotFound() {
   return (
-    <div>
-      
-    </div>
-  )
+    <Layout>
+      <h3 style={{ textAlign: "center" }}>Not Found</h3>
+    </Layout>
+  );
 }

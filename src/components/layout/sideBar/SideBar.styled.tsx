@@ -1,9 +1,14 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { transitionSpeed } from "../../../application.constant";
 import { SMain } from "../Layout/Layout.styled";
+// import { SideBarMode } from "../../../context/Theme";
 
-export const SNavBar = styled.nav`
+// type NavProps = {
+//   sideMode: SideBarMode
+// }
+
+export const SNavBar = styled.nav<any>`
   position: fixed;
   left: 0;
   background-color: ${({ theme }) => theme.headerColor};
@@ -17,19 +22,27 @@ export const SNavBar = styled.nav`
     width: 4rem;
     height: 100vh;
 
-    &:hover {
-      width: 14rem;
-    }
+    ${(props) =>
+      props.open &&
+      css`
+        width: 14rem;
+        & ~ ${SMain} {
+          margin-left: 14rem;
+        }
+      `}// &:hover {
+    //   width: 14rem;
+    // }
 
-    &:hover ~ ${SMain} {
-      margin-left: 14rem;
-    }
+    // &:hover ~ ${SMain} {
+    //   margin-left: 14rem;
+    // }
   }
 
   @media (max-width: 600px) {
     bottom: 0;
     width: 100vw;
     height: 4rem;
+    z-index:1;
   }
 `;
 
@@ -51,7 +64,7 @@ export const SNavBarNav = styled.ul`
   }
 `;
 
-export const SNavBarLogo = styled.li`
+export const SNavBarLogo = styled.li<any>`
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 1rem;
@@ -76,23 +89,53 @@ export const SNavBarLogo = styled.li`
     transition: ease ${({ theme }) => theme.speed};
   }
 
-  ${SNavBar}:hover & svg {
-    margin-left: 11rem;
-    transform: rotate(-180deg);
-  }
+  ${(props) =>
+    props.open &&
+    css`
+      & svg {
+        margin-left: 11rem;
+        transform: rotate(-180deg);
+      }
+    `}
+
+  // ${SNavBar}:hover & svg {
+  //   margin-left: 11rem;
+  //   transform: rotate(-180deg);
+  // }
 
   @media (min-width: 600px) {
-    ${SNavBar}:hover & span {
-      // left: 0px;
-      opacity: 1;
-      visibility: visible;
-      // display: inline;
-      transition: ease ${({ theme }) => theme.speed};
-    }
+    ${(props) =>
+      props.open &&
+      css`
+        & span {
+          // left: 0px;
+          opacity: 1;
+          visibility: visible;
+          // display: inline;
+          transition: ease ${({ theme }) => theme.speed};
+        }
+      `}
 
-    ${SNavBar}:hover & svg {
-      margin-left: 11rem;
-    }
+    // ${SNavBar}:hover & span {
+    //   // left: 0px;
+    //   opacity: 1;
+    //   visibility: visible;
+    //   // display: inline;
+    //   transition: ease ${({ theme }) => theme.speed};
+    // }
+
+   
+    ${(props) =>
+      props.open &&
+      css`
+        & svg {
+          margin-left: 11rem !important;
+        }
+      `}
+
+    // ${SNavBar}:hover & svg {
+    //   margin-left: 11rem;
+    // }
   }
 
   @media (max-width: 600px) {
@@ -107,7 +150,7 @@ export const SNavBarItem = styled.li`
   }
 `;
 
-export const SNavBarLink = styled(Link)`
+export const SNavBarLink = styled(Link)<any>`
   display: flex;
   align-items: center;
   height: 4rem;
@@ -137,12 +180,22 @@ export const SNavBarLink = styled(Link)`
   }
 
   @media (min-width: 600px) {
-    ${SNavBar}:hover & span {
-      opacity: 1;
-      visibility: visible;
-      transition: 100ms;
-      transition-delay: 300ms;
-    }
+    ${(props) =>
+      props.open &&
+      css`
+        & span {
+          opacity: 1;
+          visibility: visible;
+          transition: 100ms;
+          transition-delay: 300ms;
+        }
+      `}
+    // ${SNavBar}:hover & span {
+    //   opacity: 1;
+    //   visibility: visible;
+    //   transition: 100ms;
+    //   transition-delay: 300ms;
+    // }
   }
 
   @media (max-width: 600px) {
