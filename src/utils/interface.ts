@@ -22,7 +22,7 @@ export interface IUser {
 
 export interface IPagingResponse<T> {
   total: number;
-  data: T;
+  data: T[];
 }
 
 export interface IBaseLocation {

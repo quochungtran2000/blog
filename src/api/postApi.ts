@@ -8,7 +8,7 @@ import {
 } from "../utils/interface";
 
 const postApi = {
-  posts: (params: {}): Promise<IPagingResponse<IPost>> => {
+  posts: (params = {}): Promise<IPagingResponse<IPost>> => {
     const url = `${API_BASE_URL}/post`;
     return axiosClient.get(url, { params });
   },

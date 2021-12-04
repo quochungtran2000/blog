@@ -54,7 +54,7 @@ const Header: React.FC = () => {
           <SHeaderNaviconLable>Dark Mode</SHeaderNaviconLable>
           <DarkModeButton onClick={setTheme} theme={theme} />
           {user && (
-            <div>
+            <div style={{display: 'flex'}}>
               <Avatar
                 id="basic-button"
                 aria-controls="basic-menu"
@@ -64,6 +64,15 @@ const Header: React.FC = () => {
                 onClick={handleClick}
                 style={{ marginLeft: "1rem" }}
               />
+              <Button
+                  id="basic-button"
+                  aria-controls="basic-menu"
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  {user.username}
+                </Button>
               <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
