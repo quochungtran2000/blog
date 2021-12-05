@@ -1,36 +1,133 @@
 import React from "react";
 import * as S from "./ContactForm.styled";
-interface Props {}
+import B3 from "../../assets/images/download.jpg";
+import B2 from "../../assets/images/Top-1.jpg";
+import B1 from "../../assets/images/b5.jpeg";
+interface MembersProps {
+  id: number;
+  name: string;
+  position: string;
+  description: string;
+  img: string;
+  social: {
+    id: number;
+    icon: string;
+    social: string;
+    link: string;
+  }[];
+}
 
-export const ContactForm = (props: Props) => {
+export const ContactForm = () => {
+  const Members: MembersProps[] = [
+    {
+      id: 0,
+      name: "Quốc Hùng",
+      position: "Back-End Developer (Leader)",
+      description: "Chuyên nghiệp - Lãnh đạo - Tư duy",
+      img: `${B1}`,
+      social: [
+        {
+          id: 0,
+          icon: "fab fa-facebook-square",
+          social: "Facebook",
+          link: "https://www.facebook.com/tranquochung6810",
+        },
+        {
+          id: 1,
+          icon: "fab fa-github-square",
+          social: "Git Hub",
+          link: "https://github.com/quochungtran2000",
+        },
+        {
+          id: 2,
+          icon: "fas fa-envelope-square",
+          social: "Gmail",
+          link: "mailto: phantomtiger123@gmail.com",
+        },
+      ],
+    },
+    {
+      id: 1,
+      name: "Lợi Nguyễn",
+      position: "Front-End Developer",
+      description: "Nhiệt huyết - Hòa đồng - Đam mê",
+      img: `${B3}`,
+      social: [
+        {
+          id: 0,
+          icon: "fab fa-facebook-square",
+          social: "Facebook",
+          link: "https://www.facebook.com/kise274/",
+        },
+        {
+          id: 1,
+          icon: "fab fa-github-square",
+          social: "Git Hub",
+          link: "https://github.com/LoiKise",
+        },
+        {
+          id: 2,
+          icon: "fas fa-envelope-square",
+          social: "Gmail",
+          link: "mailto: phantomtiger123@gmail.com",
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Long Nguyễn",
+      position: "Back-End-Devloper",
+      description: "Tư duy-Nhiệt huyết-Cứng rắn",
+      img: `${B2}`,
+      social: [
+        {
+          id: 0,
+          icon: "fab fa-facebook-square",
+          social: "Facebook",
+          link: "https://www.facebook.com/nguyenthanhlong.nguyen.378",
+        },
+        {
+          id: 1,
+          icon: "fab fa-github-square",
+          social: "Git Hub",
+          link: "https://github.com/longkuroko",
+        },
+        {
+          id: 2,
+          icon: "fas fa-envelope-square",
+          social: "Gmail",
+          link: "mailto: phantomtiger123@gmail.com",
+        },
+      ],
+    },
+  ];
   return (
-    <S.Contact>
-      <S.Title>Contact with Kise_Nguyen</S.Title>
-      <S.ContactForm>
-        <form>
-          <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "block", marginBottom: "8px" }}>
-              Name
-            </label>
-            <input name="name" type="text" />
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "block", marginBottom: "8px" }}>
-              Email*
-            </label>
-            <input name="email" type="email" />
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            <label style={{ display: "block", marginBottom: "8px" }}>
-              messeage*
-            </label>
-            <textarea name="messeage" />
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            <button type="submit">Send</button>
-          </div>
-        </form>
-      </S.ContactForm>
-    </S.Contact>
+    <S.BodyCard>
+      {Members.map((member) => (
+        <S.Card>
+          <S.CardImage>
+            <img src={member.img} alt="hình ảnh" />
+          </S.CardImage>
+          <S.CardText>
+            <h2>{member.name}</h2>
+            <span>{member.position}</span>
+            <p>{member.description}</p>
+          </S.CardText>
+
+          <S.CardStats>
+            {member.social.map((item) => (
+              <S.Stat key={item.id}>
+                <a href={item.link}>
+                  <S.Value>
+                    <i className={item.icon}></i>
+                  </S.Value>
+                  <S.Type>{item.social}</S.Type>
+                </a>
+              </S.Stat>
+            ))}
+          </S.CardStats>
+        </S.Card>
+      ))}
+    </S.BodyCard>
   );
 };

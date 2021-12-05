@@ -1,42 +1,49 @@
 import styled, { css } from "styled-components";
-
-export const Title = styled.h1`
-  font-size: 25px;
-  margin-bottom: 30px;
-  line-height: 1.3em;
-  text-align: left;
-`;
+import { Color } from "../../styles/color";
 
 export const About = styled.div`
-  padding: 30px 10px 50px 40px;
+  width: 100%;
+  padding: 78px 0px;
+  /* background-color: #191919; */
 `;
 
 export const Main = styled.div`
+  width: 1130px;
+  max-width: 95%;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-`;
-
-export const ContentAbout = styled.div`
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 150px;
   img {
-    width: 550px;
-    height: 300px;
-    font-size: 10px;
-    color: transparent;
-    display: inline-block;
-    border-radius: 3px;
-    margin-bottom: 20px;
+    height: 500px;
+    width: 420px;
+    border-radius: 5px;
   }
 `;
 
-export const MainRight = styled.div`
-  background-color: transparent;
-  width: 380px;
-  padding: 30px 0 50px 30px;
-  flex-shrink: 0;
-`;
-
-export const Discript = styled.p`
-  line-height: 1.8em;
-  font-size: 16px;
+export const AboutText = styled.div`
+  width: 550px;
+  h1 {
+    font-size: 80px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    color: ${({ theme }) => theme.TitleAbout};
+  }
+  h5 {
+    font-size: 25px;
+    text-transform: capitalize;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+  }
+  span {
+    color: ${Color.WILDWATERMELON};
+  }
+  p {
+    color: ${({ theme }) => theme.textColor1};
+    letter-spacing: px;
+    line-height: 28px;
+    font-size: 18px;
+    margin-bottom: 45px;
+  }
 `;

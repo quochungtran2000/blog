@@ -7,6 +7,7 @@ export enum Color {
   PRESTIGEBLUE = "#2f3542",
   GRISAILLE = "#57606f",
   PEACE = "#a4b0be",
+  PEACE1 = "#fcfc",
   WILDWATERMELON = "#ff6b81",
   WATERMELON = "#ff4757",
   SATURATEDSKY = "#5352ed",
@@ -22,5 +23,5 @@ export enum Color {
   DARKTHEME = "#1e1e1e",
   LIGHTHEME = "#E2E2E2",
   NAVLIGHT = "",
-  NAVDARK = "#363a40"
+  NAVDARK = "#363a40",
 }

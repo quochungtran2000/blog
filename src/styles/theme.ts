@@ -34,30 +34,35 @@ import { Color } from "./color";
 //   navHoverColor: '#4b525c'
 // };
 
-
 export interface ITheme {
-  transitionSpeed: string,
-  fontSize90: string,
-  textColor: Color,
-  headerColor: Color
-  bodyColor: Color
-  navHoverColor: Color
+  transitionSpeed: string;
+  fontSize90: string;
+  textColor: Color;
+  headerColor: Color;
+  bodyColor: Color;
+  navHoverColor: Color;
+  textColor1: Color;
+  TitleAbout: Color;
 }
 
 export const lightTheme: ITheme = {
   transitionSpeed: transitionSpeed,
-  fontSize90: '90%',
+  fontSize90: "90%",
   textColor: Color.PRESTIGEBLUE,
   headerColor: Color.WHITE,
   bodyColor: Color.LIGHTHEME,
-  navHoverColor: Color.CITYLIGHT
-}
+  navHoverColor: Color.CITYLIGHT,
+  textColor1: Color.BLACK,
+  TitleAbout: Color.BRIGHTGREEK,
+};
 
 export const darkTheme: ITheme = {
   transitionSpeed: transitionSpeed,
-  fontSize90: '90%',
+  fontSize90: "90%",
   textColor: Color.WHITE,
   headerColor: Color.NAVDARK,
   bodyColor: Color.DARKTHEME,
-  navHoverColor: Color.GRISAILLE
-}
+  navHoverColor: Color.GRISAILLE,
+  textColor1: Color.PEACE1,
+  TitleAbout: Color.WATERMELON,
+};

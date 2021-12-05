@@ -1,54 +1,100 @@
 import styled, { css } from "styled-components";
+import { Color } from "../../styles/color";
 
-export const Title = styled.h3`
-  text-align: left;
-  font-size: 27px;
-  margin: 0;
+export const BodyCard = styled.div`
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap: 0 40px;
 `;
 
-export const Contact = styled.div`
-  padding: 30px 10px 50px 0;
-`;
-
-export const ContactForm = styled.div`
-  font-size: 14px;
-  margin-top: 30px;
-  max-width: 480px;
-  form {
-    input {
-      width: 100%;
-      padding: 15px;
-      outline: 0;
-      border: 0px solid rgba(230, 230, 230, 1);
-      border-left: 0;
-      border-right: 0;
-      border-radius: 1px;
-      line-height: 22px;
-      background-color: #fefefe;
-      box-shadow: 0 10px 20px 0 rgb(30 30 30 / 8%);
-    }
-    textarea {
-      width: 100%;
-      padding: 15px;
-      outline: 0;
-      border: 0px solid rgba(230, 230, 230, 1);
-      border-left: 0;
-      border-right: 0;
-      border-radius: 1px;
-      line-height: 22px;
-      background-color: #fefefe;
-      box-shadow: 0 10px 20px 0 rgb(30 30 30 / 8%);
-    }
-    button {
-      outline: 0;
-      border: 0;
-      border-radius: 1px;
-      padding: 10px 15px;
-      line-height: 22px;
-      background-color: #005af0;
-      color: #fefefe;
-      cursor: pointer;
-      padding: 8px 30px;
-    }
+export const Card = styled.div`
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 210px 210px 80px;
+  grid-template-areas: "image" "text" "stats";
+  border-radius: 18px;
+  background-color: #fff;
+  box-shadow: 5px 5px 15px rgb(190 182 182 / 90%);
+  text-align: center;
+  transition: 1.5 ease;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 15px rgb(190 182 182 / 70%);
   }
+`;
+
+export const CardImage = styled.div`
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  img {
+    max-width: 100%;
+    grid-area: image;
+    /* background-image: url("https://www.tma.vn/Media/Default/BaiDang/CamNangNgheNghiep/Top-1.jpg"); */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+  }
+`;
+export const CardText = styled.div`
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  span {
+    color: ${Color.WATERMELON};
+    font-size: 13px;
+  }
+  p {
+    color: grey;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  h2 {
+    margin-top: 0px;
+    font-size: 28px;
+  }
+`;
+
+export const CardStats = styled.div`
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-grid-template-rows: 1fr;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background: ${Color.CITYLIGHT};
+  border-right: 1px solid #1976d2;
+  border-left: 1px solid #1976d2;
+`;
+
+export const Stat = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  color: #1976d2;
+  :nth-child(1) {
+    border-right: 1px solid #1976d2;
+  }
+  :nth-child(2) {
+    border-right: 1px solid #1976d2;
+  }
+`;
+
+export const Value = styled.div`
+  font-size: 11px;
+  font-weight: 300;
+  text-transform: uppercase;
+`;
+
+export const Type = styled.div`
+  font-size: 15px;
+  font-weight: 500;
 `;
