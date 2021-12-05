@@ -34,7 +34,7 @@ export default function AboutPage(props: Props): ReactElement {
           <ul>
             <li>Facebook: </li>
             <li>GitHub: </li>
-            <li>Instagram</li>
+            <li>Instagram: </li>
           </ul>
         </div>
         <S.MainRight></S.MainRight>
