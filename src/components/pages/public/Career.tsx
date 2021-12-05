@@ -12,6 +12,8 @@ import categoryApi from "../../../api/categoryApi";
 import useQueryParams from "../../../hook/useQueryParam";
 import { toast } from "react-toastify";
 import { Button, IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import HandymanIcon from '@mui/icons-material/Handyman';
 
 function createData(
   name: string,
@@ -34,7 +36,6 @@ const rows = [
 export default function Career() {
   const [category, setCategory] = useState<ICategory[]>([]);
 
-
   const queryParams = useQueryParams();
   const page = queryParams.page || 1;
   const page_size = queryParams.page_size || 1;
@@ -48,7 +49,7 @@ export default function Career() {
     }
   };
 
-  console.log(category)
+  console.log(category);
 
   useEffect(() => {
     getCategory();
@@ -56,7 +57,7 @@ export default function Career() {
   }, [page, page_size]);
   return (
     <Layout>
-      <h3 style={{margin: '0 0 1rem 0'}}>Category</h3>
+      <h3 style={{ margin: "0 0 1rem 0" }}>Category</h3>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -83,11 +84,22 @@ export default function Career() {
                 <TableCell align="right">{row.title}</TableCell>
                 <TableCell align="right">{row.slug}</TableCell>
                 <TableCell align="right">{row.parent_id}</TableCell>
-                <TableCell align="right">{new Date(row.create_date).toLocaleDateString()}</TableCell>
-                <TableCell align="right">{new Date(row.update_date).toLocaleDateString()}</TableCell>
-                <TableCell align="right"><Button>Update</Button></TableCell>
-                <TableCell align="right"><IconButton aria-label="delete">
-      </IconButton></TableCell>
+                <TableCell align="right">
+                  {new Date(row.create_date).toLocaleDateString()}
+                </TableCell>
+                <TableCell align="right">
+                  {new Date(row.update_date).toLocaleDateString()}
+                </TableCell>
+                <TableCell align="right">
+                <IconButton aria-label="delete">
+                    <HandymanIcon sx={{ color: "orange" }}></HandymanIcon>
+                  </IconButton>
+                </TableCell>
+                <TableCell align="right">
+                  <IconButton aria-label="delete">
+                    <DeleteIcon sx={{ color: "red" }}></DeleteIcon>
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
