@@ -1,5 +1,5 @@
 import { Switch, Route } from "react-router";
-import { Career, Home, NotFound } from "./components/pages/public";
+import { About, Career, Home, NotFound } from "./components/pages/public";
 import Contact from "./components/pages/public/Contact";
 
 export default function Routers() {
@@ -14,8 +14,12 @@ export default function Routers() {
           <Home />
         </Route>
 
-        <Route exact path='/contact'>
-          <Contact/>
+        <Route exact path="/contact">
+          <Contact />
+        </Route>
+
+        <Route exact path="/about">
+          <About />
         </Route>
 
         <Route exact path="*">

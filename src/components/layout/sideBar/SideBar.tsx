@@ -75,7 +75,7 @@ const SideBar = () => {
         </SNavBarItem>
 
         <SNavBarItem>
-          <SNavBarLink open={open} to="/">
+          <SNavBarLink open={open} to="/about">
             <AboutIcon />
             <span>About</span>
           </SNavBarLink>
