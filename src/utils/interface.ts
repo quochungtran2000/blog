@@ -75,4 +75,5 @@ export interface ICreatePost {
   title: string;
   content: string;
   image_url: string;
+  categories: number[];
 }

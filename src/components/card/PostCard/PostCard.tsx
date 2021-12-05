@@ -16,12 +16,12 @@ function PostCard({ data }: Props) {
       <S.SPostCardContent>
         <S.SPostCardHeadLine>
           <S.SPostCardLable>
-            <S.SPostCardLink to="/" author="false" underline="true">
+            <S.SPostCardLink to={`/post/${data.id}`} author="false" underline="true">
               #asd
             </S.SPostCardLink>
           </S.SPostCardLable>
           <S.SPostCardTitle>
-            <S.SPostCardLink to="/" author="false" underline="false">
+            <S.SPostCardLink to={`/post/${data.id}`} author="false" underline="false">
               {data.title}
             </S.SPostCardLink>
           </S.SPostCardTitle>

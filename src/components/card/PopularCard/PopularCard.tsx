@@ -16,8 +16,8 @@ export default function PopularCard({ data,count }: Props) {
         <S.SPopularCardHeader>
           <S.SPopularCardInfo>
             <S.SPopularCardLabel>
-              <S.SPopularCardLink to="/">asd</S.SPopularCardLink>
-              <S.SPopularCardLink to="/">asd</S.SPopularCardLink>
+              <S.SPopularCardLink to="/">{data.author.fullname}</S.SPopularCardLink>
+              {/* <S.SPopularCardLink to="/">asd</S.SPopularCardLink> */}
             </S.SPopularCardLabel>
             <S.SPopularCardTime>
               {new Date(data.update_date).toLocaleDateString('en-GB')}
