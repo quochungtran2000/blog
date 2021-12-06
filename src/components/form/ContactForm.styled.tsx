@@ -25,6 +25,9 @@ export const Card = styled.div`
     transform: scale(1.1);
     box-shadow: 5px 5px 15px rgb(190 182 182 / 70%);
   }
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const CardImage = styled.div`
@@ -34,7 +37,6 @@ export const CardImage = styled.div`
   img {
     max-width: 100%;
     grid-area: image;
-    /* background-image: url("https://www.tma.vn/Media/Default/BaiDang/CamNangNgheNghiep/Top-1.jpg"); */
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-size: cover;
@@ -58,6 +60,7 @@ export const CardText = styled.div`
   h2 {
     margin-top: 0px;
     font-size: 28px;
+    color: ${({ theme }) => theme.TitleContact};
   }
 `;
 
@@ -68,9 +71,9 @@ export const CardStats = styled.div`
   grid-grid-template-rows: 1fr;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  background: ${Color.CITYLIGHT};
-  border-right: 1px solid #1976d2;
-  border-left: 1px solid #1976d2;
+  background: ${Color.WILDWATERMELON};
+  border-right: 1px solid #000;
+  border-left: 1px solid #000;
 `;
 
 export const Stat = styled.div`
@@ -81,10 +84,10 @@ export const Stat = styled.div`
   padding: 10px;
   color: #1976d2;
   :nth-child(1) {
-    border-right: 1px solid #1976d2;
+    border-right: 1px solid #000;
   }
   :nth-child(2) {
-    border-right: 1px solid #1976d2;
+    border-right: 1px solid #000;
   }
 `;
 

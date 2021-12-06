@@ -1,13 +1,17 @@
-import postApi from "../../../api/postApi";
-import { PostsLayout } from "../../layout";
+import careerApi from "../../../api/careerApi";
+import { Layout } from "../../layout";
 import { useEffect, useState } from "react";
-import { IPost } from "../../../utils/interface";
-import useQueryParams from "../../../hook/useQueryParam";
+import { IJob } from "../../../utils/interface";
 import { toast } from "react-toastify";
+import useQueryParams from "../../../hook/useQueryParam";
+import {  useParams } from "react-router";
+import JobLayout from "../../layout/Layout/JobLayout";
 
-export default function Home() {
-  const [post, setPost] = useState<IPost[]>([]);
-  const [popularPost, setPopularPost] = useState<IPost[]>([]);
+export default function Job() {
+  const [post, setPost] = useState<IJob>();
+  const [popularPost, setPopularPost] = useState<IJob[]>([]);
+
+  const { id }:any = useParams()
 
   const queryParams = useQueryParams();
   const page = queryParams.page || 1;
@@ -15,7 +19,7 @@ export default function Home() {
 
   const getPost = async () => {
     try {
-      const { data } = await postApi.posts({ page, page_size });
+      const data = await careerApi.job(id);
       setPost(data);
     } catch (err: any) {
       toast.error(err.message);
@@ -24,7 +28,7 @@ export default function Home() {
 
   const getPopularPost = async () => {
     try {
-      const { data } = await postApi.posts({ page: 1, page_size: 10 });
+      const { data } = await careerApi.jobs({ page: 1, page_size: 10 });
       setPopularPost(data);
     } catch (err: any) {
       toast.error(err.message);
@@ -41,10 +45,8 @@ export default function Home() {
   }, []);
   console.log(post);
   return (
-    <PostsLayout
-      posts={post}
-      popularPost={popularPost}
-      title={"Danh sách các bài đăng"}
-    ></PostsLayout>
+    <Layout>
+      {post && <JobLayout post={post} popularPost={popularPost}></JobLayout>}
+    </Layout>
   );
 }

@@ -27,7 +27,7 @@ export default function AboutPage(): ReactElement {
       id: 0,
       img: `${BG1}`,
       title: "Tiểu Sử Ra Đời",
-      name: "About Us",
+      name: "About L2H",
       animation: "zoom-out-left",
       description:
         "  Trong thời đại 4.0. Công nghệ đang dần được phát triển và càng được phát triển hơn trong thời kì dịch bệnh ngày nay. Chuyển đổi kĩ thuật số đang được các nhà doanh nghiệp chú ý tới, cùng vì lý do này màngành công nghệ thông tin đang được các bạn trẻ chú ý đến. Vì đanglà sinh viên ngành này nên mình cũng một phần hiểu được tâm tư củacác bạn đang có nguyện vọng này. Thấu hiểu được nguyện vọng nên L2H đã cho ra đời một môi trường mà các bạn Dev có thể cùng nhau chia sẽcác kĩ năng và kinh nghiệm với nhau. Đồng thời giúp các bạn bỏ được rào cản và kết nối lại gần nhau hơn...",

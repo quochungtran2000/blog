@@ -43,6 +43,7 @@ export interface ITheme {
   navHoverColor: Color;
   textColor1: Color;
   TitleAbout: Color;
+  TitleContact: Color;
 }
 
 export const lightTheme: ITheme = {
@@ -54,6 +55,7 @@ export const lightTheme: ITheme = {
   navHoverColor: Color.CITYLIGHT,
   textColor1: Color.BLACK,
   TitleAbout: Color.BRIGHTGREEK,
+  TitleContact: Color.BLACK,
 };
 
 export const darkTheme: ITheme = {
@@ -65,4 +67,5 @@ export const darkTheme: ITheme = {
   navHoverColor: Color.GRISAILLE,
   textColor1: Color.PEACE1,
   TitleAbout: Color.WATERMELON,
+  TitleContact: Color.BLACK,
 };

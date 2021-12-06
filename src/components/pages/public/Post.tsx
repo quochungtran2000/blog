@@ -1,13 +1,16 @@
 import postApi from "../../../api/postApi";
-import { PostsLayout } from "../../layout";
+import { PostLayout, Layout } from "../../layout";
 import { useEffect, useState } from "react";
 import { IPost } from "../../../utils/interface";
-import useQueryParams from "../../../hook/useQueryParam";
 import { toast } from "react-toastify";
+import useQueryParams from "../../../hook/useQueryParam";
+import {  useParams } from "react-router";
 
-export default function Home() {
-  const [post, setPost] = useState<IPost[]>([]);
+export default function Post() {
+  const [post, setPost] = useState<IPost>();
   const [popularPost, setPopularPost] = useState<IPost[]>([]);
+
+  const { id }:any = useParams()
 
   const queryParams = useQueryParams();
   const page = queryParams.page || 1;
@@ -15,7 +18,7 @@ export default function Home() {
 
   const getPost = async () => {
     try {
-      const { data } = await postApi.posts({ page, page_size });
+      const data = await postApi.post(id);
       setPost(data);
     } catch (err: any) {
       toast.error(err.message);
@@ -41,10 +44,8 @@ export default function Home() {
   }, []);
   console.log(post);
   return (
-    <PostsLayout
-      posts={post}
-      popularPost={popularPost}
-      title={"Danh sách các bài đăng"}
-    ></PostsLayout>
+    <Layout>
+      {post && <PostLayout post={post} popularPost={popularPost}></PostLayout>}
+    </Layout>
   );
 }

@@ -187,7 +187,7 @@ export const SNavBarLink = styled(Link)<any>`
           opacity: 1;
           visibility: visible;
           transition: 100ms;
-          transition-delay: 300ms;
+          // transition-delay: 300ms;
         }
       `}
     // ${SNavBar}:hover & span {

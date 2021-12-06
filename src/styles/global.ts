@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle<Props>`
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    // transition-delay: 0ms;
   }
   body {
     height: 100vh;

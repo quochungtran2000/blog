@@ -1,5 +1,12 @@
 import { Switch, Route } from "react-router";
-import { About, Career, Home, NotFound } from "./components/pages/public";
+import {
+  Career,
+  Home,
+  NotFound,
+  Post,
+  Job,
+  About,
+} from "./components/pages/public";
 import Contact from "./components/pages/public/Contact";
 
 export default function Routers() {
@@ -10,6 +17,14 @@ export default function Routers() {
           <Career />
         </Route>
 
+        <Route exact path="/about">
+          <About />
+        </Route>
+
+        <Route path="/career/:id">
+          <Job />
+        </Route>
+
         <Route exact path="/">
           <Home />
         </Route>
@@ -18,8 +33,8 @@ export default function Routers() {
           <Contact />
         </Route>
 
-        <Route exact path="/about">
-          <About />
+        <Route path={`/post/:id`}>
+          <Post />
         </Route>
 
         <Route exact path="*">

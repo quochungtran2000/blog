@@ -41,7 +41,7 @@ const SideBar = () => {
             }}
             to="/"
           >
-            <span>Coding</span>
+            <span>Side Bar</span>
             <ArrowRightIcon />
           </SNavBarLink>
         </SNavBarLogo>

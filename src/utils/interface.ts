@@ -75,4 +75,36 @@ export interface ICreatePost {
   title: string;
   content: string;
   image_url: string;
+  categories: number[];
+}
+
+export interface IJob {
+  id: number;
+  title: string;
+  content: string;
+  level: string;
+  author: IUser;
+  location: JobLocation;
+  create_date: Date;
+  update_date: Date;
+}
+
+export interface JobLocation {
+  city_code: number;
+  city_name: string;
+  district_code: number;
+  district_name: string;
+  ward_code: number;
+  ward_name: string;
+  street: string;
+  full_address: string;
+}
+
+export interface ICategory {
+  id: number;
+  title: string;
+  slug: string | null;
+  parent_id: number;
+  create_date: Date;
+  update_date: Date;
 }
