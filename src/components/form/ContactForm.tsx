@@ -1,4 +1,3 @@
-import React from "react";
 import * as S from "./ContactForm.styled";
 import B3 from "../../assets/images/download.jpg";
 import B2 from "../../assets/images/Top-1.jpg";

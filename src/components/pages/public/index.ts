@@ -5,4 +5,4 @@ export { default as Career } from "./Career";
 export { default as Post } from "./Post";
 export { default as Job } from "./Job";
 export { default as About } from "./About";
-export { default as ContactForm } from "./Contact";
+export { default as Contact } from "./Contact";

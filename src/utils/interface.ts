@@ -1,4 +1,4 @@
-import { UserRole } from "./enum";
+import { UserRole } from './enum';
 
 export interface BaseResponse {
   status: number;
@@ -76,6 +76,7 @@ export interface ICreatePost {
   content: string;
   image_url: string;
   categories: number[];
+  tags: number[];
 }
 
 export interface IJob {
@@ -105,6 +106,14 @@ export interface ICategory {
   title: string;
   slug: string | null;
   parent_id: number;
+  create_date: Date;
+  update_date: Date;
+}
+
+export interface ITag {
+  id: number;
+  title: string;
+  slug: string | null;
   create_date: Date;
   update_date: Date;
 }

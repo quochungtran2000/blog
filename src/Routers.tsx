@@ -1,13 +1,6 @@
-import { Switch, Route } from "react-router";
-import {
-  Career,
-  Home,
-  NotFound,
-  Post,
-  Job,
-  About,
-} from "./components/pages/public";
-import Contact from "./components/pages/public/Contact";
+import { Switch, Route } from 'react-router';
+import { Career, Home, NotFound, Post, Job, About, Contact } from './components/pages/public';
+import CreatePost from './components/pages/user/CreatePost';
 
 export default function Routers() {
   return (
@@ -35,6 +28,10 @@ export default function Routers() {
 
         <Route path={`/post/:id`}>
           <Post />
+        </Route>
+
+        <Route exact path={`/create-post`}>
+          <CreatePost />
         </Route>
 
         <Route exact path="*">

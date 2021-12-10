@@ -1,12 +1,10 @@
-import React, { ReactElement, useEffect } from "react";
+import { ReactElement } from "react";
 import * as S from "./AboutPage.styled";
 import BG1 from "../../assets/images/about1.jpg";
 import People1 from "../../assets/images/per1.jpg";
 import People2 from "../../assets/images/per2.jpg";
 import People3 from "../../assets/images/per3.jpg";
-import "aos/dist/aos.css";
-import Aos from "aos";
-import { isTypeNode } from "typescript";
+// import Aos from "aos";
 
 interface AboutProps {
   id: number;
@@ -18,9 +16,9 @@ interface AboutProps {
 }
 
 export default function AboutPage(): ReactElement {
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
+  // useEffect(() => {
+  //   Aos.init({ duration: 2000 });
+  // }, []);
 
   const AboutList: AboutProps[] = [
     {

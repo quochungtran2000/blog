@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Color } from "../../styles/color";
 
 export const BodyCard = styled.div`
@@ -19,10 +19,10 @@ export const Card = styled.div`
   background-color: #fff;
   box-shadow: 5px 5px 15px rgb(190 182 182 / 90%);
   text-align: center;
-  transition: 1.5 ease;
+  transition: 300ms linear;
   cursor: pointer;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 5px 5px 15px rgb(190 182 182 / 70%);
   }
   a {

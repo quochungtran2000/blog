@@ -11,27 +11,9 @@ import { useEffect, useState } from "react";
 import categoryApi from "../../../api/categoryApi";
 import useQueryParams from "../../../hook/useQueryParam";
 import { toast } from "react-toastify";
-import { Button, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import HandymanIcon from "@mui/icons-material/Handyman";
-
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
 
 export default function Career() {
   const [category, setCategory] = useState<ICategory[]>([]);
