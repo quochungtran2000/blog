@@ -19,7 +19,7 @@ export default function PostsLayout({ posts, popularPost, title }: Props) {
           <h3 style={{ textAlign: "left", margin: "1rem 0" }}>{title}</h3>
           <Grid container spacing={2}>
             {posts.map((item: IPost, index: number) => (
-              <Grid key={index} item xs={12} md={6} xl={4}>
+              <Grid key={index} item xs={12} sm={6} md={4} lg={4} xl={3}>
                 <PostCard data={item} />
               </Grid>
             ))}

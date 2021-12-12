@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.MuiPagination-ul{
+  justify-content: center !important;
+}

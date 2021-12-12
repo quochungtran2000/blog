@@ -67,6 +67,8 @@ export interface IPost {
   image_url: string;
   slug: string;
   author: IUser;
+  postCategory:IPostCategory[];
+  postTag: IPostTag[];
   create_date: string;
   update_date: string;
 }
@@ -77,6 +79,16 @@ export interface ICreatePost {
   image_url: string;
   categories: number[];
   tags: number[];
+}
+
+export interface ICreateJob {
+  title: string;
+  content: string;
+  level: string;
+  city_id: number;
+  district_id: number;
+  ward_id: number;
+  street: string;
 }
 
 export interface IJob {
@@ -116,4 +128,16 @@ export interface ITag {
   slug: string | null;
   create_date: Date;
   update_date: Date;
+}
+
+export interface IPostCategory {
+  post_id: number;
+  category_id: number;
+  category: ICategory;
+}
+
+export interface IPostTag {
+  post_id: number;
+  tag_id: number;
+  tag: ITag;
 }

@@ -27,7 +27,7 @@ export default function Post() {
 
   const getPopularPost = async () => {
     try {
-      const { data } = await postApi.posts({ page: 1, page_size: 10 });
+      const { data } = await postApi.posts({ page: page, page_size: page_size });
       setPopularPost(data);
     } catch (err: any) {
       toast.error(err.message);

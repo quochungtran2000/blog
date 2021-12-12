@@ -11,7 +11,7 @@ export default function Home() {
 
   const queryParams = useQueryParams();
   const page = queryParams.page || 1;
-  const page_size = queryParams.page_size || 1;
+  const page_size = queryParams.page_size || 12;
 
   const getPost = async () => {
     try {
@@ -24,7 +24,7 @@ export default function Home() {
 
   const getPopularPost = async () => {
     try {
-      const { data } = await postApi.posts({ page: 1, page_size: 10 });
+      const { data } = await postApi.posts({ page: 1, page_size: 5 });
       setPopularPost(data);
     } catch (err: any) {
       toast.error(err.message);

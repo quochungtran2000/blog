@@ -72,7 +72,7 @@ export default function Job({ data }: Props) {
         </S.SJobHeadLine>
 
         <S.SJobImage>
-          {/* <img src={data.image_url} alt={data.title}></img> */}
+          <img src={"https://static.topcv.vn/company_covers/S0N7IDADuKjaNkmIZSX6.jpg"} alt={data.title}></img>
         </S.SJobImage>
 
         <S.SJobEntry>

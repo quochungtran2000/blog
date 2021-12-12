@@ -1,4 +1,5 @@
 import { Switch, Route } from 'react-router';
+import { CreateJob } from './components/pages/hr';
 import { Career, Home, NotFound, Post, Job, About, Contact } from './components/pages/public';
 import CreatePost from './components/pages/user/CreatePost';
 
@@ -32,6 +33,10 @@ export default function Routers() {
 
         <Route exact path={`/create-post`}>
           <CreatePost />
+        </Route>
+
+        <Route exact path={`/create-job`}>
+          <CreateJob />
         </Route>
 
         <Route exact path="*">

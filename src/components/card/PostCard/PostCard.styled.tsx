@@ -92,7 +92,7 @@ export const SPostCardTime = styled.div<any>`
 
 export const SPostCardLink = styled(Link)<any>`
   color: ${({ theme }) => theme.textColor};
-  text-decoration: ${(props) => (props.underline ? "underline" : "none")};
+  text-decoration: ${(props) => (props.underline === true ? "underline" : "none")};
   transition: 100ms linear !important;
   transition-delay: 0ms !important;
 
@@ -101,6 +101,5 @@ export const SPostCardLink = styled(Link)<any>`
     css`
       font-size: 120%;
       font-weight: 600;
-      margin: 1rem 0;
     `}
 `;

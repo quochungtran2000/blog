@@ -1,6 +1,6 @@
 import { API_BASE_URL } from "../application.constant";
 import axiosClient from "./axiosClient";
-import { BaseResponse, IJob, IPagingResponse } from "../utils/interface";
+import { BaseResponse, ICreateJob, IJob, IPagingResponse } from "../utils/interface";
 
 const careerApi = {
   jobs: (params = {}): Promise<IPagingResponse<IJob>> => {
@@ -11,7 +11,7 @@ const careerApi = {
     const url = `${API_BASE_URL}/career/${id}`;
     return axiosClient.get(url);
   },
-  create: (data: any): Promise<BaseResponse> => {
+  create: (data: ICreateJob): Promise<BaseResponse> => {
     const url = `${API_BASE_URL}/career`;
     return axiosClient.post(url, data);
   },

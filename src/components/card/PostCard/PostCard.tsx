@@ -1,5 +1,5 @@
-import { IPost } from "../../../utils/interface";
-import * as S from "./PostCard.styled";
+import { IPost, IPostTag } from '../../../utils/interface';
+import * as S from './PostCard.styled';
 
 type Props = {
   data: IPost;
@@ -16,9 +16,14 @@ function PostCard({ data }: Props) {
       <S.SPostCardContent>
         <S.SPostCardHeadLine>
           <S.SPostCardLable>
-            <S.SPostCardLink to={`/post/${data.id}`} author="false" underline="true">
-              #asd
-            </S.SPostCardLink>
+            {data.postTag.map((item: IPostTag, index: number) => (
+              <>
+                {`${index > 0 ? ' ,' : ''}`}
+                <S.SPostCardLink to={`/post?tag=${item.tag_id}`} author="false" underline="true">
+                  {`#${item.tag.title}`}
+                </S.SPostCardLink>
+              </>
+            ))}
           </S.SPostCardLable>
           <S.SPostCardTitle>
             <S.SPostCardLink to={`/post/${data.id}`} author="false" underline="false">
@@ -30,9 +35,7 @@ function PostCard({ data }: Props) {
               <S.SPostCardLink author="true" underline="false" to="/">
                 {data.author.fullname}
               </S.SPostCardLink>
-              <S.SPostCardTime>
-                {new Date(data.update_date).toLocaleDateString('en-GB')}
-              </S.SPostCardTime>
+              <S.SPostCardTime>{new Date(data.update_date).toLocaleDateString('en-GB')}</S.SPostCardTime>
             </S.SPostCardHeader>
           </S.SPostCardInfo>
         </S.SPostCardHeadLine>

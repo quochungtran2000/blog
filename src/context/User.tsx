@@ -30,7 +30,7 @@ export function UserProvider(props: Props) {
 
     // Decode if there's token
     const decoded: IUser = jwtDecode(token.replace("Bearer ", ""));
-
+    console.log(decoded)
     // Set id and role as user data
     // => Will re-render routes and push to / (user role's homepage)
     return decoded;
