@@ -16,7 +16,7 @@ function PostCard({ data }: Props) {
       <S.SPostCardContent>
         <S.SPostCardHeadLine>
           <S.SPostCardLable>
-            {data.postTag.map((item: IPostTag, index: number) => (
+            {data?.postTag?.map((item: IPostTag, index: number) => (
               <>
                 {`${index > 0 ? ' ,' : ''}`}
                 <S.SPostCardLink to={`/post?tag=${item.tag_id}`} author="false" underline="true">
