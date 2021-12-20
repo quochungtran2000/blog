@@ -41,6 +41,7 @@ export default function Post() {
 
   useEffect(() => {
     getPopularPost();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(post);
   return (

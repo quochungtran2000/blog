@@ -1,11 +1,6 @@
-import { API_BASE_URL } from "../application.constant";
-import axiosClient from "./axiosClient";
-import {
-  BaseResponse,
-  ICreatePost,
-  IPagingResponse,
-  IPost,
-} from "../utils/interface";
+import { API_BASE_URL } from '../application.constant';
+import axiosClient from './axiosClient';
+import { BaseResponse, ICreatePost, IPagingResponse, IPost } from '../utils/interface';
 
 const postApi = {
   posts: (params = {}): Promise<IPagingResponse<IPost>> => {

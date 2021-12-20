@@ -67,7 +67,7 @@ export interface IPost {
   image_url: string;
   slug: string;
   author: IUser;
-  postCategory:IPostCategory[];
+  postCategory: IPostCategory[];
   postTag: IPostTag[];
   create_date: string;
   update_date: string;
@@ -140,4 +140,27 @@ export interface IPostTag {
   post_id: number;
   tag_id: number;
   tag: ITag;
+}
+
+export interface ICustomer {
+  id: number;
+  username: string;
+  password: string;
+  email: string;
+  phone: string;
+  fullname: string;
+  create_date: Date;
+  update_date: Date;
+  partner_role: IPartnerRole[];
+}
+
+export interface IPartnerRole {
+  partner_id: number;
+  role_id: number;
+  role: IRole;
+}
+
+export interface IRole {
+  id: number;
+  role: string;
 }
