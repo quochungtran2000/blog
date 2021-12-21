@@ -12,7 +12,7 @@ import { DashBoardLayout } from '.';
 import useQueryParams from '../../hook/useQueryParam';
 import { useHistory, useLocation } from 'react-router-dom';
 import * as queryString from 'query-string';
-import ConstructionIcon from '@mui/icons-material/Construction';
+// import ConstructionIcon from '@mui/icons-material/Construction';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import SearchIcon from '@mui/icons-material/Search';
 import {
@@ -132,7 +132,7 @@ export default function District() {
                       <TableCell>Id</TableCell>
                       <TableCell>Tên</TableCell>
                       <TableCell>Mã City</TableCell>
-                      <TableCell>Sửa</TableCell>
+                      {/* <TableCell>Sửa</TableCell> */}
                       <TableCell>Xóa</TableCell>
                     </TableRow>
                   </TableHead>
@@ -142,9 +142,9 @@ export default function District() {
                         <TableCell>{row.id}</TableCell>
                         <TableCell>{row.name}</TableCell>
                         <TableCell>{row.city_id}</TableCell>
-                        <TableCell>
+                        {/* <TableCell>
                           <ConstructionIcon style={{ fill: 'orange' }} />
-                        </TableCell>
+                        </TableCell> */}
                         <TableCell>
                           <DeleteForeverIcon style={{ fill: 'red' }} />
                         </TableCell>

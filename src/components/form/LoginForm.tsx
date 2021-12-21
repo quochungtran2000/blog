@@ -55,8 +55,9 @@ const LoginForm = ({ onClose, onOpenRegister }: Props) => {
       toast.success("login success");
       onClose();
     } catch (error: any) {
+      console.log({error})
       setCloseBackdrop();
-      toast.error("username or password incorrect");
+      toast.error(error?.response?.data?.message);
       onClose();
     }
   };

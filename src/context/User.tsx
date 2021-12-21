@@ -41,7 +41,11 @@ export function UserProvider(props: Props) {
   const getUser = async () => {
     try {
       const userData = await authApi.me();
+      console.log({userData})
+
       setUser(userData);
+      
+      if(userData.role?.toLowerCase() === "admin") history.push({pathname: '/dashboard'})
       return userData;
     } catch (error: any) {
       // Toast error message

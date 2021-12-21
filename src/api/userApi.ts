@@ -1,5 +1,5 @@
 import { API_BASE_URL } from '../application.constant';
-import { ICustomer, IPagingResponse } from '../utils/interface';
+import { ICustomer, IPagingResponse, IUpdateUser } from '../utils/interface';
 import axiosClient from './axiosClient';
 
 const userApi = {
@@ -11,13 +11,17 @@ const userApi = {
     const url = `${API_BASE_URL}/user/${id}`;
     return axiosClient.get(url);
   },
-  updateUser: (id: number, data: any) => {
-    const url = `${API_BASE_URL}/user/${id}`;
-    return axiosClient.put(url);
+  updateUser: (data: IUpdateUser) => {
+    const url = `${API_BASE_URL}/user`;
+    return axiosClient.put(url, data);
   },
-  changePassword: (id: number, data: any) => {
-    const url = `${API_BASE_URL}/user/${id}/change-password`;
-    return axiosClient.put(url);
+  changePassword: (data: any) => {
+    const url = `${API_BASE_URL}/user/change-password`;
+    return axiosClient.post(url, data);
+  },
+  delete: (id: number) => {
+    const url = `${API_BASE_URL}/user/${id}`;
+    return axiosClient.delete(url);
   },
 };
 

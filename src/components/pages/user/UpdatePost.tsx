@@ -17,7 +17,7 @@ import tagApi from '../../../api/tagApi';
 import axios from 'axios';
 import { postApi } from '../../../api';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 const Input = styled(TextField)<any>`
   background-color: #fff;
@@ -40,6 +40,7 @@ export default function UpdatePost() {
   const [image, setImage] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const { id }: any = useParams();
+  const history = useHistory();
 
   const getPostDetail = async (id: number) => {
     try {
@@ -204,7 +205,8 @@ export default function UpdatePost() {
     await postApi.update(id, data).catch((error: any) => {
       toast.error('Update Post Error');
     });
-    toast.error('Update Post Successs');
+    toast.success('Update Post Successs');
+    history.push({pathname: '/my-post'})
   };
 
   return (

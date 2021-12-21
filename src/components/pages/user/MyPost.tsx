@@ -40,6 +40,14 @@ export default function MyPost() {
       toast.error('get total new user false');
     }
   };
+
+  const onClick = async (id: number) => {
+    await postApi.delete(id).catch((error: any) => {
+      return toast.error('Xóa bài không thành công');
+    })
+    toast.success("Xóa bài thành công");
+    getNewPost();
+  }
   useEffect(() => {
     setLoading(true);
     getNewPost();
@@ -98,7 +106,7 @@ export default function MyPost() {
                           </Link>
                         </CustomTableCell>
                         <CustomTableCell align="center">
-                          <DeleteForeverIcon sx={{ fill: 'red' }} />
+                          <DeleteForeverIcon sx={{ fill: 'red' }} onClick={() => onClick(post.id)}/>
                         </CustomTableCell>
                       </TableRow>
                     ))}

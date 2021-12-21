@@ -4,8 +4,10 @@ import Dashboard from './components/Dashboard/DashBoard';
 import { CreateJob } from './components/pages/hr';
 import MyJob from './components/pages/hr/MyJob';
 import { Career, Home, NotFound, Post, Job, About, Contact } from './components/pages/public';
+import ChangePassword from './components/pages/user/ChangePassword';
 import CreatePost from './components/pages/user/CreatePost';
 import MyPost from './components/pages/user/MyPost';
+import Profile from './components/pages/user/Profile';
 import UpdatePost from './components/pages/user/UpdatePost';
 
 export default function Routers() {
@@ -58,6 +60,14 @@ export default function Routers() {
 
         <Route exact path={`/my-job`}>
           <MyJob />
+        </Route>
+
+        <Route exact path={`/my-profile`}>
+          <Profile />
+        </Route>
+
+        <Route exact path={`/change-password`}>
+          <ChangePassword />
         </Route>
 
 

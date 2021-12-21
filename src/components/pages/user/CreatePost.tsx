@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 import tagApi from '../../../api/tagApi';
 import axios from 'axios';
 import { postApi } from '../../../api';
+import { useHistory } from 'react-router-dom';
 
 const Input = styled(TextField)<any>`
   background-color: #fff;
@@ -28,6 +29,7 @@ interface ISelect {
 }
 
 export default function CreatePost() {
+  const history = useHistory()
   const [category, setCategory] = useState<ICategory[]>([]);
   const [tags, setTags] = useState<ITag[]>([]);
   const [selectTags, setSelectTags] = useState<ISelect[]>([]);
@@ -164,6 +166,9 @@ export default function CreatePost() {
     await postApi.create(data).catch((error: any) => {
       toast.error('Create Post Error');
     });
+    toast.success('Create Post Success');
+
+    history.push({pathname: '/my-post'})
     console.log(data);
   };
 

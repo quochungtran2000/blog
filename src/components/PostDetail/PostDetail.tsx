@@ -1,6 +1,4 @@
-import { Avatar, Paper } from '@mui/material';
-import { useState } from 'react';
-import { useUser } from '../../context/User';
+import { Avatar } from '@mui/material';
 import { IComment, IPost } from '../../utils/interface';
 import Comment from '../Comment/Comment';
 import * as S from './PostDetail.styled';
@@ -8,7 +6,7 @@ import * as S from './PostDetail.styled';
 type Props = {
   data: IPost;
   comments: IComment[];
-  reloadComment: () => void
+  reloadComment: () => void;
 };
 
 export default function PostDetail({ data, comments, reloadComment }: Props) {
@@ -30,7 +28,7 @@ export default function PostDetail({ data, comments, reloadComment }: Props) {
                   id="basic-button"
                   aria-controls="basic-menu"
                   aria-haspopup="true"
-                  src={'../../assets/images/avatarpng.png'}
+                  src={data.author.image_url}
                 />
               </S.SPostInfoImage>
               <S.SPostInfoAuthor>
@@ -59,7 +57,7 @@ export default function PostDetail({ data, comments, reloadComment }: Props) {
               {comments.map((comment, index) => (
                 <div style={{ padding: '0.25rem', display: 'flex', marginBottom: '1rem' }}>
                   <div style={{ marginRight: '0.5rem' }}>
-                    <Avatar src="https://www.inpixio.com/remove-background/images/main-before.jpg"></Avatar>
+                    <Avatar src={comment.author_image_url}></Avatar>
                   </div>
                   <div
                     style={{ display: 'flex', flexGrow: 1, flexDirection: 'column', justifyContent: 'space-between' }}

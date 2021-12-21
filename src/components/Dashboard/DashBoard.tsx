@@ -153,7 +153,7 @@ function DashboardContent() {
     getNewPost();
     getNewJob();
   }, []);
-  
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -177,7 +177,9 @@ function DashboardContent() {
               <MenuIcon />
             </IconButton>
             <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-              Dashboard
+              <Link color="inherit" href="https://hungblog.vercel.app">
+                Dashboard
+              </Link>
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -246,7 +248,7 @@ function DashboardContent() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders loading={loadingPost} data={posts} />
+                  <Orders loading={loadingPost} data={posts} reload={getNewPost} />
                 </Paper>
               </Grid>
               <Grid item xs={12}>

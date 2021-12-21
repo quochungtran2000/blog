@@ -85,6 +85,13 @@ export default function Customer() {
     }
   };
 
+  const banUser = async (id: number) => {
+    await userApi.delete(id)
+    toast.success("Cấm thảnh công");
+    getCustomer({page,page_size})
+  }
+
+
   useEffect(() => {
     setOpenBackdrop();
     getCustomer({ page, page_size });
@@ -146,7 +153,7 @@ export default function Customer() {
                       return (
                         <TableRow key={row.id}>
                           <TableCell>
-                            <Avatar>H</Avatar>
+                            <Avatar src={row.image_url}>H</Avatar>
                           </TableCell>
 
                           <TableCell>{row.fullname}</TableCell>
@@ -156,11 +163,11 @@ export default function Customer() {
                           <TableCell>{new Date(row.create_date).toLocaleDateString('en-GB')}</TableCell>
                           <TableCell>
                             {/* <ConstructionIcon style={{ fill: 'orange' }} /> */}
-                            {index % 4 === 0 ? 'Bị cấm' : 'Hoạt động'}
+                            {row.ban ? 'Bị cấm' : 'Hoạt động'}
                           </TableCell>
                           <TableCell>
-                            {index % 4 !== 0 ? (
-                              <Unpublished style={{ fill: 'orange' }} />
+                            {!row.ban ? (
+                              <Unpublished style={{ fill: 'orange' }} onClick={() => banUser(row.id)} />
                             ) : (
                               <PublicIcon style={{ fill: 'green' }} />
                             )}

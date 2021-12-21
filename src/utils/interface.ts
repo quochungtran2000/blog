@@ -55,6 +55,7 @@ export interface IUser {
   email: string;
   phone: string;
   fullname: string;
+  image_url: string;
   role: string;
   create_date: Date;
   update_date: Date;
@@ -147,8 +148,10 @@ export interface ICustomer {
   username: string;
   password: string;
   email: string;
+  image_url: string;
   phone: string;
   fullname: string;
+  ban: boolean;
   create_date: Date;
   update_date: Date;
   partner_role: IPartnerRole[];
@@ -172,4 +175,12 @@ export interface IComment {
   author_name: string;
   create_date: Date;
   update_date: Date;
+  author_image_url: string;
+}
+
+export interface IUpdateUser {
+  fullname: string;
+  phone: string;
+  email: string;
+  image_url: string;
 }

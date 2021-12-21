@@ -61,7 +61,7 @@ const Header: React.FC = () => {
                 id="basic-button"
                 aria-controls="basic-menu"
                 aria-haspopup="true"
-                src={'../../assets/images/avatarpng.png'}
+                src={user.image_url}
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
                 style={{ marginLeft: '1rem' }}
@@ -84,7 +84,11 @@ const Header: React.FC = () => {
                   'aria-labelledby': 'basic-button',
                 }}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link style={{ textDecoration: 'none' }} to="/my-profile" onClick={handleClose}>
+                    Profile
+                  </Link>
+                </MenuItem>
                 <MenuItem onClick={handleClose}>
                   <Link style={{ textDecoration: 'none' }} to="/my-post" onClick={handleClose}>
                     My Post

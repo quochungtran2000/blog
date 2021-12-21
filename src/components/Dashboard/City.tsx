@@ -10,7 +10,7 @@ import { locationApi } from '../../api';
 import { toast } from 'react-toastify';
 import { DashBoardLayout } from '.';
 import { Grid, Paper, TableContainer, TablePagination } from '@mui/material';
-import ConstructionIcon from '@mui/icons-material/Construction';
+// import ConstructionIcon from '@mui/icons-material/Construction';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function City() {
@@ -73,7 +73,7 @@ export default function City() {
                       <TableCell></TableCell>
                       <TableCell></TableCell>
                       <TableCell></TableCell>
-                      <TableCell>Sửa</TableCell>
+                      {/* <TableCell>Sửa</TableCell> */}
                       <TableCell>Xóa</TableCell>
                     </TableRow>
                   </TableHead>
@@ -88,9 +88,9 @@ export default function City() {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
-                        <TableCell>
+                        {/* <TableCell>
                           <ConstructionIcon style={{ fill: 'orange' }} />
-                        </TableCell>
+                        </TableCell> */}
                         <TableCell>
                           <DeleteForeverIcon style={{ fill: 'red' }} />
                         </TableCell>

@@ -9,13 +9,25 @@ import { Avatar } from '@mui/material';
 import { IPost } from '../../utils/interface';
 import HideSource from '@mui/icons-material/HideSource';
 import LoadingIcon from '../Loading/LoadingIcon';
+import { postApi } from '../../api';
+import { toast } from 'react-toastify';
 
 type Props = {
   data: IPost[];
   loading: boolean;
+  reload: () => void
 };
 
-export default function Post({ data, loading }: Props) {
+export default function Post({ data, loading,reload }: Props) {
+
+  const onClick = async(id:number) => {
+    await postApi.delete(id).catch((error:any) => {
+      return toast.error("Xoá bài không thành công")
+    })
+    toast.success("Xóa bài thành công")
+    reload();
+  }
+
   return (
     <React.Fragment>
       <Title>Bài đăng mới nhất</Title>
@@ -57,7 +69,7 @@ export default function Post({ data, loading }: Props) {
                 <TableCell>{new Date(post.create_date).toLocaleDateString('en-GB')}</TableCell>
                 <TableCell align="center">123</TableCell>
                 <TableCell align="center">
-                  <HideSource sx={{ fill: 'orange' }} />
+                  <HideSource sx={{ fill: 'orange' }} onClick={() => onClick(post.id)} />
                 </TableCell>
               </TableRow>
             ))}

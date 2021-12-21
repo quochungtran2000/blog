@@ -25,7 +25,7 @@ export default function Job({ data }: Props) {
                   id="basic-button"
                   aria-controls="basic-menu"
                   aria-haspopup="true"
-                  src={"../../assets/images/avatarpng.png"}
+                  src={data.author.image_url}
                 />
               </S.SJobInfoImage>
 
