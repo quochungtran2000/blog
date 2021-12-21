@@ -53,7 +53,7 @@ const SideBar = () => {
           </SNavBarLink>
         </SNavBarItem>
 
-        <SNavBarItem>
+        {/* <SNavBarItem>
           <SNavBarLink open={open} to="/post">
             <TrendingIcon />
             <span>Trending</span>
@@ -65,7 +65,7 @@ const SideBar = () => {
             <HomeIcon />
             <span>Post</span>
           </SNavBarLink>
-        </SNavBarItem>
+        </SNavBarItem> */}
 
         <SNavBarItem>
           <SNavBarLink open={open} to="/career">

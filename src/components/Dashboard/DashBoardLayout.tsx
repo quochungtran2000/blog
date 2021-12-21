@@ -114,7 +114,9 @@ export default function DashBoardLayout(props: IProps) {
               <MenuIcon />
             </IconButton>
             <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-              Dashboard
+            <Link color="inherit" href="/dashboard">
+                Dashboard
+              </Link>
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">

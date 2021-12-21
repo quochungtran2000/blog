@@ -89,6 +89,11 @@ const Header: React.FC = () => {
                     Profile
                   </Link>
                 </MenuItem>
+                <MenuItem>
+                  <Link style={{ textDecoration: 'none' }} to="/dashboard" onClick={handleClose}>
+                    Dashboard
+                  </Link>
+                </MenuItem>
                 <MenuItem onClick={handleClose}>
                   <Link style={{ textDecoration: 'none' }} to="/my-post" onClick={handleClose}>
                     My Post
