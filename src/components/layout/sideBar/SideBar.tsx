@@ -2,7 +2,7 @@ import { ReactComponent as HomeIcon } from "../../../assets/icons/home-icon.svg"
 import { ReactComponent as CategoryIcon } from "../../../assets/icons/category.svg";
 import { ReactComponent as ArrowRightIcon } from "../../../assets/icons/arrow-right.svg";
 // import { ReactComponent as MostCommentIcon } from "../../../assets/icons";
-import { ReactComponent as TrendingIcon } from "../../../assets/icons/trending.svg";
+// import { ReactComponent as TrendingIcon } from "../../../assets/icons/trending.svg";
 // import { ReactComponent as LinkedIcon } from "../../../assets/icons/linked.svg";
 // import { ReactComponent as MessengerIcon } from "../../../assets/icons/messenger.svg";
 // import { ReactComponent as SkypeIcon } from "../../../assets/icons/skype.svg";
