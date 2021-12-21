@@ -90,13 +90,20 @@ const Header: React.FC = () => {
                     My Post
                   </Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                {/* <MenuItem onClick={handleClose}>
                   <Link style={{ textDecoration: 'none' }} to="/my-post-request" onClick={handleClose}>
                     My Post Request
                   </Link>
-                </MenuItem>
+                </MenuItem> */}
+                {user.role?.toLowerCase() === 'hr' && (
+                  <MenuItem onClick={handleClose}>
+                    <Link style={{ textDecoration: 'none' }} to="/my-job" onClick={handleClose}>
+                      My Job
+                    </Link>
+                  </MenuItem>
+                )}
 
-                {user.role.toLowerCase() === 'hr' && (
+                {user.role?.toLowerCase() === 'hr' && (
                   <MenuItem onClick={handleClose}>
                     <Link style={{ textDecoration: 'none' }} to="/create-job" onClick={handleClose}>
                       Create Job

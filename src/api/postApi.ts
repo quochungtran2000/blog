@@ -23,6 +23,10 @@ const postApi = {
     const url = `${API_BASE_URL}/post/${id}`;
     return axiosClient.delete(url);
   },
+  myPost: (params: any): Promise<IPagingResponse<IPost>> => {
+    const url = `${API_BASE_URL}/me/my-post`;
+    return axiosClient.get(url, { params });
+  },
 };
 
 export default postApi;

@@ -10,13 +10,14 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { ICategory, ICreatePost, ITag } from '../../../utils/interface';
+import { ICategory, ICreatePost, IPost, ITag } from '../../../utils/interface';
 import categoryApi from '../../../api/categoryApi';
 import { toast } from 'react-toastify';
 import tagApi from '../../../api/tagApi';
 import axios from 'axios';
 import { postApi } from '../../../api';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useParams } from 'react-router-dom';
 
 const Input = styled(TextField)<any>`
   background-color: #fff;
@@ -29,6 +30,7 @@ interface ISelect {
 }
 
 export default function UpdatePost() {
+  const [post, setPost] = useState<IPost | undefined>(undefined);
   const [category, setCategory] = useState<ICategory[]>([]);
   const [tags, setTags] = useState<ITag[]>([]);
   const [selectTags, setSelectTags] = useState<ISelect[]>([]);
@@ -36,11 +38,37 @@ export default function UpdatePost() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const { id }: any = useParams();
 
+  const getPostDetail = async (id: number) => {
+    try {
+      const data = await postApi.post(id);
+      console.log(data);
+      setPost(data);
+      setTitle(data.title);
+      setImageUrl(data.image_url);
+      setContent(data.content);
+      // setImage(data.image_url);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(post);
+
+  useEffect(() => {
+    getPostDetail(id);
+    // eslint-disable-next-line
+  }, []);
 
   const handleRemoveImage = () => {
-    setImage('')
-  }
+    setImage('');
+  };
+
+  const handleRemoveImageUrl = () => {
+    setImageUrl('');
+  };
 
   const getCategory = async () => {
     try {
@@ -144,33 +172,39 @@ export default function UpdatePost() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    let image_url = imageUrl;
 
-    const asd = new FormData();
-    asd.append('file', image);
-    asd.append('upload_preset', 'ceh3abtd');
+    if (image) {
+      const asd = new FormData();
+      asd.append('file', image);
+      asd.append('upload_preset', 'ceh3abtd');
 
-    const cloudinaryResponse: any = await axios
-      .post('https://api.cloudinary.com/v1_1/hunghamhoc/image/upload', asd, {
-        headers: {
-          accept: 'application/json',
-          'Accept-Language': 'en-US,en;q=0.8',
-          'Content-Type': `multipart/form-data`,
-        },
-      })
-      .catch((err: any) => toast.error('Upload image error'));
+      const cloudinaryResponse: any = await axios
+        .post('https://api.cloudinary.com/v1_1/hunghamhoc/image/upload', asd, {
+          headers: {
+            accept: 'application/json',
+            'Accept-Language': 'en-US,en;q=0.8',
+            'Content-Type': `multipart/form-data`,
+          },
+        })
+        .catch((err: any) => toast.error('Upload image error'));
+
+      image_url = cloudinaryResponse?.data?.url;
+    }
+
     // .then((res) => console.log(res));
     const data: ICreatePost = {
       title: title,
       content: content,
       categories: getSelectId(selectCategory),
       tags: getSelectId(selectTags),
-      image_url: cloudinaryResponse?.data?.url || '',
+      image_url,
     };
 
-    await postApi.create(data).catch((error: any) => {
+    await postApi.update(id, data).catch((error: any) => {
       toast.error('Update Post Error');
     });
-    console.log(data);
+    toast.error('Update Post Successs');
   };
 
   return (
@@ -180,15 +214,15 @@ export default function UpdatePost() {
         style={btnstyle}
         value={title}
         label="Title"
-        placeholder="Enter title"
+        // placeholder="Enter title"
         fullWidth
         required
         onChange={handleChangeTitle}
       />
-      {!image && <Input style={btnstyle} type="file" fullWidth required onChange={handleChangeImage} />}
-      {image && (
+      {!imageUrl && !image && <Input style={btnstyle} type="file" fullWidth required onChange={handleChangeImage} />}
+      {!imageUrl && image && (
         <Box>
-          <Paper sx={{ padding: '1rem',display:'flex' }}>
+          <Paper sx={{ padding: '1rem', display: 'flex' }}>
             <Avatar
               // src="https://gamek.mediacdn.vn/133514250583805952/2021/8/5/anh-3-16281368644081386506616.jpg"
               //@ts-ignore
@@ -196,13 +230,34 @@ export default function UpdatePost() {
               variant="rounded"
               sx={{ maxWidth: '550px', width: '300px', height: '200px' }}
             ></Avatar>
-            <div style={{display: 'flex', alignItems: 'center', marginLeft: '2rem'}}>
-            <Button onClick={handleRemoveImage}><DeleteForeverIcon/></Button>
-
+            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '2rem' }}>
+              <Button onClick={handleRemoveImage}>
+                <DeleteForeverIcon />
+              </Button>
             </div>
           </Paper>
         </Box>
       )}
+
+      {imageUrl && (
+        <Box>
+          <Paper sx={{ padding: '1rem', display: 'flex' }}>
+            <Avatar
+              // src="https://gamek.mediacdn.vn/133514250583805952/2021/8/5/anh-3-16281368644081386506616.jpg"
+              //@ts-ignore
+              src={imageUrl}
+              variant="rounded"
+              sx={{ maxWidth: '550px', width: '300px', height: '200px' }}
+            ></Avatar>
+            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '2rem' }}>
+              <Button onClick={handleRemoveImageUrl}>
+                <DeleteForeverIcon />
+              </Button>
+            </div>
+          </Paper>
+        </Box>
+      )}
+
       <Accordion sx={{ margin: '0.5rem 0' }}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
           <FormControlLabel
@@ -267,7 +322,7 @@ export default function UpdatePost() {
       </Accordion>
 
       <Editor
-        initialValue=""
+        initialValue={content}
         init={{
           height: 500,
           menubar: true,

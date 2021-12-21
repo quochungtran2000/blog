@@ -164,3 +164,12 @@ export interface IRole {
   id: number;
   role: string;
 }
+
+export interface IComment {
+  id: number;
+  comment: number;
+  author_id: number;
+  author_name: string;
+  create_date: Date;
+  update_date: Date;
+}

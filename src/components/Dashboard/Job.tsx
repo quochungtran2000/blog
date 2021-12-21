@@ -5,15 +5,13 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
-import { IJob, IWard } from '../../utils/interface';
-import { careerApi, locationApi } from '../../api';
+import { IJob } from '../../utils/interface';
+import { careerApi } from '../../api';
 import { toast } from 'react-toastify';
 import { DashBoardLayout } from '.';
 import useQueryParams from '../../hook/useQueryParam';
 import { useHistory, useLocation } from 'react-router-dom';
 import * as queryString from 'query-string';
-import ConstructionIcon from '@mui/icons-material/Construction';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import SearchIcon from '@mui/icons-material/Search';
 import {
   Avatar,

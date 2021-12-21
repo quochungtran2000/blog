@@ -8,8 +8,8 @@ import { Avatar, Box, Container, Grid, Paper, Typography } from '@mui/material';
 import { Layout } from '../../layout';
 import styled from 'styled-components';
 import LoadingIcon from '../../Loading/LoadingIcon';
-import { IPost } from '../../../utils/interface';
-import { postApi } from '../../../api';
+import { IJob } from '../../../utils/interface';
+import { careerApi } from '../../../api';
 import { toast } from 'react-toastify';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -25,15 +25,15 @@ const CustomTableCell = styled(TableCell)<any>`
   color: ${({ theme }) => theme.textColor}!important;
 `;
 
-export default function MyPost() {
-  const [posts, sePosts] = useState<IPost[]>([]);
+export default function MyJob() {
+  const [jobs, setJobs] = useState<IJob[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const getNewPost = async () => {
+  const getJob = async () => {
     try {
-      const { data,total } = await postApi.myPost({ page: 1, page_size: 10 });
-      console.log({total})
-      sePosts(data);
+      const { data, total } = await careerApi.myJob({ page: 1, page_size: 10 });
+      console.log({ total, data });
+      setJobs(data);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -42,7 +42,7 @@ export default function MyPost() {
   };
   useEffect(() => {
     setLoading(true);
-    getNewPost();
+    getJob();
   }, []);
 
   return (
@@ -53,13 +53,14 @@ export default function MyPost() {
             <Grid container spacing={3}>
               <React.Fragment>
                 <Typography component="h2" variant="h6" gutterBottom>
-                  Bài đăng của tôi
+                  Việc làm của tôi
                 </Typography>
                 <Table size="small">
                   <TableHead>
                     <TableRow>
                       <CustomTableCell></CustomTableCell>
                       <CustomTableCell sx={{ maxWidth: '400px' }}>Tiêu đề</CustomTableCell>
+                      <CustomTableCell>Level</CustomTableCell>
                       <CustomTableCell>Ngày tạo</CustomTableCell>
                       <CustomTableCell>Ngày cập nhật</CustomTableCell>
                       <CustomTableCell>Lượt xem</CustomTableCell>
@@ -68,13 +69,13 @@ export default function MyPost() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {posts?.map((post) => (
+                    {!loading && jobs?.map((post) => (
                       <TableRow key={post.id}>
                         <CustomTableCell>
                           <Avatar
                             sx={{ bgcolor: 'Highlight', height: '50px', width: '100%', maxWidth: '50px' }}
                             variant="square"
-                            src={post.image_url}
+                            src={"https://daihoc.fpt.edu.vn/media/2019/12/nhan-vien-kms-technology-source-careerbuilder.jpg"}
                           />
                         </CustomTableCell>
                         <CustomTableCell sx={{ maxWidth: '400px' }}>
@@ -89,12 +90,13 @@ export default function MyPost() {
                             {post.title}
                           </div>
                         </CustomTableCell>
+                        <CustomTableCell>{post.level}</CustomTableCell>
                         <CustomTableCell>{new Date(post.create_date).toLocaleDateString('en-GB')}</CustomTableCell>
                         <CustomTableCell>{new Date(post.update_date).toLocaleDateString('en-GB')}</CustomTableCell>
                         <CustomTableCell align="center">123</CustomTableCell>
                         <CustomTableCell align="center">
                           <Link to={`update-post/${post.id}`}>
-                          <ConstructionIcon sx={{ fill: 'orange' }} />
+                            <ConstructionIcon sx={{ fill: 'orange' }} />
                           </Link>
                         </CustomTableCell>
                         <CustomTableCell align="center">
